@@ -1,0 +1,30 @@
+{
+  "name": "emojination",
+  "version": "1.0.0",
+  "description": "Based on an idea by Katie Ouaknine.",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Emojination"
+  },
+  "author": "JJ Keith",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.7",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-session": "^1.14.0",
+    "gulp-sass": "^2.3.2",
+    "mongoose": "^4.5.4",
+    "morgan": "^1.7.0",
+    "node-sass": "^3.8.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0"
+  }
+}

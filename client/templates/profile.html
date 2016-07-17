@@ -1,0 +1,8 @@
+<h1>Current User: {{ main.currentUser.username }}</h1>
+
+<!-- New Tweet Form -->
+<form ng-submit="usersCtrl.createTweet()">
+  <input type="text" placeholder = "New tweet" ng-model="usersCtrl.newTweet">
+  <button type="submit">Add Tweet</button>
+
+</form>
