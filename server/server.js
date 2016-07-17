@@ -15,9 +15,9 @@ var
   , favicon = require('serve-favicon')
 
 // mongoose
-mongoose.connect('mongodb://muffy:muffy@ds023465.mlab.com:23465/emojination', function(err) {
-  if(err) return console.log(err)
-  console.log("Connected to MongoDB (mean-auth)")
+mongoose.connect(process.env.DB_URL, function(err){
+	if (err) throw err;
+	console.log('connected to mongodb (emojination)');
 })
 
 // SASS
