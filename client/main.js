@@ -1,6 +1,6 @@
-var Emojination = angular.module('Emogination', ['ui.router'])
+var emojination = angular.module('emojination', ['ui.router'])
 
-myApp.config(function ($stateProvider, $urlRouterProvider) {
+emojination.config(function ($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise('/')
 
@@ -45,7 +45,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
 
 // Checks is user is logged in when state changes.
 // If not, it will redirect to the login state
-myApp.run(function ($rootScope, $location, $state, AuthService) {
+emojination.run(function ($rootScope, $location, $state, AuthService) {
   $rootScope.$on("$stateChangeError", console.log.bind(console));//this line is a logging tool; it will log things based on the type of error.
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
     AuthService.getUserStatus()

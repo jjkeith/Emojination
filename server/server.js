@@ -1,23 +1,34 @@
-#!/usr/bin/env node
-var port = process.env.PORT || 3000
-
-// dependencies
-var express = require('express')
-var logger = require('morgan')
-var cookieParser = require('cookie-parser')
-var bodyParser = require('body-parser')
-var expressSession = require('express-session')
-var mongoose = require('mongoose')
-var hash = require('bcrypt-nodejs')
-var path = require('path')
-var passport = require('passport')
-var passportConfig = require('./config/passport.js')
+var
+  port = process.env.PORT || 3000
+  , express = require('express')
+  , storylogger = require('morgan')
+  , cookieParser = require('cookie-parser')
+  , bodyParser = require('body-parser')
+  , expressSession = require('express-session')
+  , mongoose = require('mongoose')
+  , hash = require('bcrypt-nodejs')
+  , path = require('path')
+  , passport = require('passport')
+  , passportConfig = require('./config/passport.js')
+  , logger = require('morgan')
+  , sass = require('node-sass')
+  , favicon = require('serve-favicon')
 
 // mongoose
-mongoose.connect('mongodb://localhost/mean-auth', function(err) {
+mongoose.connect('mongodb://muffy:muffy@ds023465.mlab.com:23465/emojination', function(err) {
   if(err) return console.log(err)
   console.log("Connected to MongoDB (mean-auth)")
 })
+
+// SASS
+sass.render({
+  file: 'style/style.scss',
+}, function(err, result) {
+  if (err){
+      console.log("sass error");
+  }
+});
+
 
 // user schema/model
 var User = require('./models/User.js')
@@ -42,6 +53,7 @@ app.use(require('express-session')({
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(favicon('favicon.ico'));
 
 // routes
 app.use('/user/', routes)

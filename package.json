@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "Emojination"
+    "url": "emojination"
   },
   "author": "JJ Keith",
   "license": "ISC",
@@ -25,6 +25,7 @@
     "node-sass": "^3.8.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^4.0.0"
+    "passport-local-mongoose": "^4.0.0",
+    "serve-favicon": "^2.3.0"
   }
 }

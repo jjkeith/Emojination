@@ -1,17 +1,37 @@
-<div class="col-md-4">
-  <h1>Register</h1>
-  <div ng-show="registerCtrl.error" class="alert alert-danger">{{registerCtrl.errorMessage}}</div>
-  <form class="form" ng-submit="registerCtrl.register()">
-    <div class="form-group">
-      <label>Username</label>
-      <input type="text" class="form-control" name="username" ng-model="registerCtrl.registerForm.username" required>
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <h1>Register</h1>
+      <div ng-show="registerCtrl.error" class="alert alert-danger">{{registerCtrl.errorMessage}}</div>
     </div>
-    <div class="form-group">
+  </div>
+<form class="form" ng-submit="registerCtrl.register()">
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <label>Username</label>
+      <input type="text" class="form-control" placeholder="username" name="username" ng-model="registerCtrl.registerForm.username" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6 offset-s3">
       <label>Password</label>
         <input type="password" class="form-control" name="password" ng-model="registerCtrl.registerForm.password" required>
-      </div>
-      <div>
-        <button type="submit" class="btn btn-default" ng-disabled="registerCtrl.disabled">Register</button>
-      </div>
-  </form>
-</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s4 offset-s3">
+      Choose an emoji to represent you:
+    </div>
+    <div class="col s2">
+      <p>
+        imaginary dropdown menu of emojis
+        <!-- which, of course, will be connected to the controller -->
+      </p>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col s1 offset-s7">
+      <button type="submit" class="btn btn-default" ng-disabled="registerCtrl.disabled">Register</button>
+    </div>
+  </div>
+</form>

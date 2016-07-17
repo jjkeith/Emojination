@@ -1,4 +1,4 @@
-angular.module('myApp')
+angular.module('emojination')
   .controller('mainController', mainController)
   .controller('loginController', loginController)
   .controller('logoutController', logoutController)
@@ -16,11 +16,9 @@ angular.module('myApp')
 
   function usersController ($http) {
     var vm = this
-    vm.title = "The Users Controller"
-    console.log(vm.title);
 
     vm.createStory = function() {
-      // post the tweet to an API route
+      // post the story to an API route
       console.log("Posting new story:", vm.newStory);
       $http.post('/user/stories', {tweet: vm.newStory})
         .success(function(data){
@@ -31,6 +29,7 @@ angular.module('myApp')
 
 function mainController($rootScope, $state, AuthService) {
   var vm = this
+  vm.name = "Emojination"
   $rootScope.$on('$stateChangeStart', function (event) {
     // console.log("Changing states")
     AuthService.getUserStatus()
