@@ -13,6 +13,8 @@ var
   , logger = require('morgan')
   , sass = require('node-sass')
   , favicon = require('serve-favicon')
+  , dotenv = require('dotenv').load({silent: true})
+
 
 // mongoose
 mongoose.connect(process.env.DB_URL, function(err){
