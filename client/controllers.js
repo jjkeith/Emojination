@@ -30,6 +30,7 @@ angular.module('emojination')
 function mainController($rootScope, $state, AuthService) {
   var vm = this
   vm.name = "Emojination"
+
   $rootScope.$on('$stateChangeStart', function (event) {
     // console.log("Changing states")
     AuthService.getUserStatus()

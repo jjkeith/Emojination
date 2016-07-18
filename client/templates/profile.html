@@ -2,11 +2,12 @@
 
 <!-- In the simplest working version, the entry point would be a single page with a preloaded topic -->
 
-<h4>Image a string of emojis here. Wouldn't that be neat?</h4>
+<h4>Imagine a string of emojis here. Wouldn't that be neat?</h4>
 <!-- New Story Form -->
 <form ng-submit="usersCtrl.createStory()">
-  <input type="text" placeholder = "write your story here" ng-model="usersCtrl.newStory">
+  <input type="text" placeholder = "What story are these emojis telling?" ng-model="usersCtrl.newStory">
   <!-- This needs to have a character limit of like 1000 -->
+  <!-- Such a fluffy perk, but I'd love for the placeholder to be randomly selected from an array of goofy placeholders. -->
   <button type="submit">Add Story</button>
 
 </form>

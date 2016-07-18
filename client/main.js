@@ -1,4 +1,5 @@
 var emojination = angular.module('emojination', ['ui.router'])
+// removed ['sc.twemoji'] as a dependency, but I need that, right?
 
 emojination.config(function ($stateProvider, $urlRouterProvider) {
 

@@ -2,12 +2,14 @@
 
 Based on an idea by Katie Ouaknine.
 
-####Technology:
+####Technology (turn these into links)
 * Parallax landing page that explains the concept with screen shots and some jazzy animation. (Note to self: [https://ihatetomatoes.net/how-to-create-a-parallax-scrolling-website/](). Also, worth investigating whether it is better to use something like scrollr or use pure css. )
 * SASS
 * Angular
 * Passport
 * Materialize (for now)
+* Twemoji
+* UI Router
 
 
 ####User Stories
