@@ -1,4 +1,4 @@
-#Project 4 Notes
+#README for Emojination
 
 Based on an idea by Katie Ouaknine.
 
@@ -13,11 +13,11 @@ Based on an idea by Katie Ouaknine.
 
 
 ####User Stories
-* Users can create an emojination (working title) account or log in.
+* Users can create an Emojination (working title) account or log in.
 * Users may be teens (13+) or adults.
 * Users can select their favorite emoticon to be their avatar
-* Users can scroll through a list of story "topics" (strings of 10-20 emoticons).
-* Users can go to a topic page to read and upvote other users' stories.
+* Users can scroll through a list of story "topics" (strings of 5-15 emoticons).
+* Users can go to a topic page to read and up vote other users' stories.
 * Users can contribute a new story to a "topic."
 * Users can add a new topic.
 * Users can edit their accounts (including a bio told in emoticons).
@@ -35,4 +35,8 @@ Based on an idea by Katie Ouaknine.
 * Users can comment on others' stories (this may be more easily implemented with Disqus; I will investigate).
 
 
-###Note to self: Don't forget to update booksterizer for github.
+####Wireframes
+![](ProfilePage.png)
+![](PromptPage.png)
+
+
