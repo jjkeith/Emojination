@@ -42,7 +42,7 @@ function mainController($rootScope, $state, AuthService) {
   })
 }
 
-// LOGIN CONTROLLER:
+// Login controller
 function loginController($state, AuthService) {
   var vm = this
   vm.login = function () {
@@ -62,7 +62,7 @@ function loginController($state, AuthService) {
       })
       // handle error
       .catch(function () {
-        console.log("Whoops...")
+        console.log("Login no bueno")
         vm.error = true
         vm.errorMessage = "Invalid username and/or password"
         // the flash container is in login.html. This is the code that populates that container.
@@ -73,7 +73,7 @@ function loginController($state, AuthService) {
 }
 
 
-// LOGOUT CONTROLLER:
+// Logout Controller
 function logoutController($state, AuthService) {
   var vm = this
   vm.logout = function () {
@@ -81,12 +81,12 @@ function logoutController($state, AuthService) {
     // call logout from service
     AuthService.logout()
       .then(function () {
-        $state.go('login')
+        $state.go('home')
       })
   }
 }
 
-// REGISTER CONTROLLER:
+// Register controller
 function registerController($state, AuthService) {
   var vm = this
   vm.register = function () {
@@ -106,7 +106,7 @@ function registerController($state, AuthService) {
       // handle error
       .catch(function () {
         vm.error = true
-        vm.errorMessage = "Something went wrong!"
+        vm.errorMessage = "Something es malo!"
         vm.disabled = false
         vm.registerForm = {}
       })

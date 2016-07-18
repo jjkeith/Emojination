@@ -1,1 +1,83 @@
-<h2>Hello, {{ main.currentUser.username }}</h2>
+<div class="row center-align">
+  <div class="col m10 s12 offset-m1 offset-s0">
+    <h2>Story time, y'all!</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m2 offset-m1 offset-s0">
+    <div class="card hoverable">
+      <div class="card-image">
+        <img src="images/Alien.png">
+        <span class="card-title"></span>
+      </div>
+      <!-- <div class="card-content">
+        <p></p>
+      </div> -->
+      <div class="card-action center-align">
+        <a ui-sref="random-prompt">Random Prompt</a>
+      </div>
+  </div>
+</div>
+  <div class="col s12 m2">
+    <div class="card hoverable">
+      <div class="card-image">
+        <img src="images/Alien.png">
+        <span class="card-title"></span>
+      </div>
+      <!-- <div class="card-content">
+        <p></p>
+      </div> -->
+      <div class="card-action center-align">
+        <a ui-sref="random-story">Random Story</a>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m2">
+    <div class="card hoverable">
+      <div class="card-image">
+        <img src="images/Alien.png">
+        <span class="card-title"></span>
+      </div>
+      <!-- <div class="card-content">
+        <p></p>
+      </div> -->
+      <div class="card-action center-align">
+        <a ui-sref="browse">Browse Prompts</a>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m2">
+    <div class="card hoverable">
+      <div class="card-image">
+        <img src="images/Alien.png">
+        <span class="card-title"></span>
+      </div>
+      <!-- <div class="card-content">
+        <p></p>
+      </div> -->
+      <div class="card-action center-align">
+        <a ui-sref="new-prompt">Add a New Prompt</a>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m2">
+    <div class="card hoverable">
+      <div class="card-image">
+        <img src="images/Alien.png">
+        <span class="card-title"></span>
+      </div>
+      <!-- <div class="card-content">
+        <p></p>
+      </div> -->
+      <div class="card-action center-align">
+        <a ui-sref="story-rankings">Most Up Votes</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m2 offset-m5 offset-s0">
+    <div ng-controller="logoutController as logoutCtrl">
+      <a ng-click='logoutCtrl.logout()' class="btn btn-default">Logout</a>
+  </div>

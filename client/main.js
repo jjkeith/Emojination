@@ -25,14 +25,9 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/register.html',
       controller: 'registerController as registerCtrl'
     })
-    .state('one', {
-      url: '/one',
-      template: '<h1>This is page one!</h1>'
-    })
-    .state('two', {
-      url: '/two',
-      template: '<h1>This is page two!</h1>',
-      restricted: true
+    .state('browse', {
+      url: '/browse',
+      template: '<h3>Let us browse the topics. i.e. template not yet created — to say nothing of the rest of the back end stuff needed.</h3>'
     })
     .state('profile', {
       url: '/profile',
@@ -40,7 +35,31 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
       restricted: true,
       controller: 'usersController as usersCtrl'
     })
-
+    .state('edit-profile', {
+      url: '/edit-profile',
+      template: '<h3>Someday, once a template is created and the backend works, users will edit their profiles here.</h3>',
+      restricted: true
+    })
+    .state('random-prompt', {
+      url: '/ask-philippe',
+      template: '<h3>This will be hecka cool when it works. Pseudo code is something like: <br><small>index = Math.floor(Math.random() * promptsArray.length)</small><br> and then render <br><small>promptsArray[index]</small>;</h3>',
+      restricted: true
+    })
+    .state('random-story', {
+      url: '/ask-philippe',
+      template: '<h3>Pseudo code is something like: <br><small>index = Math.floor(Math.random() * storiesArray.length)</small><br> and then render storiesArray[index]; — But I got a funny feeling that this is not going to work</h3>',
+      restricted: true
+    })
+    .state('new-prompt', {
+      url: '/ask-philippe',
+      template: '<h3>Add a new prompt — the real challenge here is how to serve up the emojis</h3>',
+      restricted: true
+    })
+    .state('story-rankings', {
+      url: '/ask-philippe',
+      template: '<h3>Pseudo code is something like:<br> <small>Sort array of stories by ranking and return indices 0-9.</small></h3>',
+      restricted: true // probably don't want this to be restricted, but rather linked from the main page, but gonna need to add the restriction that only logged in users can upvote.
+    })
 })
 
 
@@ -53,9 +72,8 @@ emojination.run(function ($rootScope, $location, $state, AuthService) {
     .then(function(){
       // console.log(toState)
       if (toState.restricted && !AuthService.isLoggedIn()){
-        // if a page is restricted and the user is not logged in, render 'login'
-        // $location.path('/login')
-        $state.go('login');
+        // if a page is restricted and the user is not logged in, render 'home'
+        $state.go('home');
       }
     })
   })

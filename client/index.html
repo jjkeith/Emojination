@@ -41,6 +41,8 @@
 </head>
 <body ng-app="emojination">
   <div ng-controller="mainController as main">
+
+    <!-- Navbar, awaiting movement to a partial -->
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
@@ -49,17 +51,19 @@
             <li>Welcome, {{ main.currentUser.username }}!</li>
           </ul>
           <ul class="right hide-on-med-and-down">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Browse Topics</a></li>
-            <li><a href="#">Your Profile</a></li>
+            <li><a ui-sref="home">Home</a></li>
+            <li><a ui-sref="browse">Browse Topics</a></li>
+            <li><a ui-sref="profile">Your Profile</a></li>
           </ul>
         </div>
       </nav>
     </div>
 
-
+<!-- <div class="container"> -->
     <div ui-view></div>
-  </div>
+  <!-- </div> -->
+</div>
+
 
 
 
