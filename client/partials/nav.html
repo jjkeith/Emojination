@@ -1,19 +1,21 @@
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo center">Em<small ng-bind-html="main.randomOh1 | twemoji"></small>jinati<small ng-bind-html="main.randomOh2 | twemoji"></small>n</a>
-        <div ng-if=" main.currentUser.username !== nil">
+      <a href="#!" class="brand-logo center">Em<small ng-bind-html="main.randomOhs[0] | twemoji"></small>jinati<small ng-bind-html="main.randomOhs[1] | twemoji"></small>n</a>
+        <div ng-if="main.currentUser.username !== nil">
           <ul class="left hide-on-med-and-down">
             <li>
               {{ main.greeting }}&nbsp{{ main.currentUser.username }}</li>
           </ul>
         </div>
       <ul class="right hide-on-med-and-down">
-        <li><a ui-sref="profile">Home</a></li>
+//fix this later
+
+        <li ng-if="main.currentUser.username !== nil"><a ui-sref="home">Home</a></li>
         <li><a ui-sref="prompts">Browse Topics</a></li>
 
             <!-- Dropdown Trigger -->
-            <li ng-if=" main.currentUser.username !== nil"><a class='dropdown-button ' href='javascript:void(0);' data-activates='navDropdown' dropdown data-hover="true">
+            <li ng-if="main.currentUser.username !== nil"><a class='dropdown-button ' href='javascript:void(0);' data-activates='navDropdown' dropdown data-hover="true">
             Profile
             </a></li>
       </ul>
@@ -25,6 +27,7 @@
 
 <!-- Dropdown Structure -->
 <ul id='navDropdown' class='dropdown-content'>
+    <li><a href="javascript:void(0);" ui-sref="profile">View Profile</a></li>
     <li><a href="javascript:void(0);" ui-sref="profile-edit">Edit Profile</a></li>
     <li><a href="javascript:void(0);">Your Stories</a></li>
     <li><a href="javascript:void(0);">Your Up Votes</a></li>

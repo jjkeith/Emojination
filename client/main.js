@@ -7,10 +7,9 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/')
 
   $stateProvider
-    .state('home', {
+    .state('landing', {
       url: '/',
-      templateUrl: 'templates/home.html',
-      restricted: true
+      templateUrl: 'templates/landing.html',
     })
     .state('login', {
       url: '/login',
@@ -32,8 +31,14 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
     })
     //I know the routing here is not RESTful. Need to fix.
     .state('prompt', {
-      url: '/prompt',
+      url: '/prompts/:id',
       templateUrl: 'templates/prompt.html',
+      controller: 'usersController as usersCtrl'
+    })
+    .state('home', {
+      url: '/home',
+      templateUrl: 'templates/home.html',
+      restricted: true,
       controller: 'usersController as usersCtrl'
     })
     .state('profile', {
@@ -79,8 +84,8 @@ emojination.run(function ($rootScope, $location, $state, AuthService) {
     .then(function(){
       // console.log(toState)
       if (toState.restricted && !AuthService.isLoggedIn()){
-        // if a page is restricted and the user is not logged in, render 'home'
-        $state.go('home');
+        // if a page is restricted and the user is not logged in, render 'landing'
+        $state.go('landing');
       }
     })
   })

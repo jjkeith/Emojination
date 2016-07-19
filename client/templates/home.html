@@ -1,20 +1,30 @@
+<div class="row center-align">
+  <div class="col m10 s12 offset-m1 offset-s0">
+    <h2>{{ main.profileGreeting }}</h2>
 
-    <div class="row">
-      <div class="col s8 offset-s2 center-align">
-        <h3>It's story time!</h3>
-        <p>Someday these buttons will be hotlinked emojis</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s4 offset-s2 center-align">
-        <a ui-sref="login" class="waves-effect waves-light btn">Log In</a>
-      </div>
-      <div class="col s4 center-align">
-        <a ui-sref="register" class="waves-effect waves-light btn">Register</a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s8 offset-s2 center-align">
-        <p>imagine all sorts of neat stuff here, such a parallax page with a summary of how the site works. Hecka hecka css animations...</p>
-      </div>
-    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m2 offset-m1 offset-s0">
+    <a class="center-align" ui-sref="prompt"><h1 ng-bind-html="main.randomEmojis[0] | twemoji"></h1>Random Prompt</a>
+    <!-- Change this ui-sref to random-prompt when that is working -->
+  </div>
+  <div class="col s12 m2">
+    <a ui-sref="prompts/random#story-tag"><h1 ng-bind-html="main.randomEmojis[1] | twemoji"></h1>Random Story</a>
+  </div>
+  <div class="col s12 m2">
+    <a ui-sref="prompts"><h1 ng-bind-html="main.randomEmojis[2] | twemoji"></h1>Browse Prompts</a>
+  </div>
+  <div class="col s12 m2">
+    <a ui-sref="prompts/new"><h1 ng-bind-html="main.randomEmojis[3] | twemoji"></h1>Add New Prompt</a>
+  </div>
+  <div class="col s12 m2">
+    <a ui-sref="top-stories"><h1 ng-bind-html="main.randomEmojis[4] | twemoji"></h1>Top Stories</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m2 offset-m5 offset-s0">
+    <div ng-controller="logoutController as logoutCtrl">
+      <a ng-click='logoutCtrl.logout()' class="btn btn-default">Logout</a>
+  </div>

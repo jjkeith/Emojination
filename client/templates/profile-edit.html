@@ -1,1 +1,38 @@
-<h3>edit profile</h3>
+<div class="row">
+  <div class="col s6 offset-s3">
+    <h1>Edit {{ main.currentUser.username }}'s Profile</h1>
+    <!-- <div ng-show="registerCtrl.error" class="alert alert-danger">{{registerCtrl.errorMessage}}</div> -->
+  </div>
+</div>
+<form class="form" ng-submit="userCtrl.editUser()">
+<div class="row">
+  <div class="col s6 offset-s3">
+    <label>Add a bio</label>
+      <div ng-if="main.currentUser.bio !== nil">
+        <input type="textarea" class="form-control" placeholder="main.currentUser.bio" name="bio" ng-model="main.currentUser.bio">
+      </div>
+      <div ng-if="main.currentUser.bio == nil">
+        <input type="textarea" class="form-control" placeholder="Enter bio here" name="bio" ng-model="main.currentUser.bio">
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s4 offset-s3">
+    <label>Choose an emoji to represent you:</label>
+
+  </div>
+  <div class="col s2">
+    <p>
+      imaginary dropdown menu of emojis
+      <!-- which, of course, will be connected to the controller -->
+    </p>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col s1 offset-s7">
+    <button type="submit" class="btn btn-default" ng-disabled="registerCtrl.disabled">Register</button>
+  </div>
+</div>
+</form>
