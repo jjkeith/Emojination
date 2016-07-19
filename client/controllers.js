@@ -34,7 +34,7 @@ function mainController($rootScope, $state, AuthService) {
   var vm = this
   vm.name = "Emojination"
   vm.space = " "
-  vm.funness = ['Hi, ', 'Hello, ', 'SUP, brah, ', 'Hola, ', 'Aloha, ', 'Bonjour, ', 'こんにちは, ', '你好, ', 'Hodi, ', 'Hallå, ', 'Ciao, ', 'Hei, ', 'Wah gwaan, ', 'Halo, ', 'Kamusta, ', 'Heyo, ', 'Dude, ', '여보세요, ', 'Hallo, ', 'Lol, no, ', 'Nano toka, ', 'Kíimak oolal, ', 'MURICA, ', 'Guns up, tits out, ', 'Olá, '
+  vm.funness = ['Hi, ', 'Hello, ', 'SUP, brah, ', 'Hola, ', 'Aloha, ', 'Bonjour, ', 'こんにちは, ', '你好, ', 'Hodi, ', 'Hallå, ', 'Ciao, ', 'Hei, ', 'Wah gwaan, ', 'Halo, ', 'Kamusta, ', 'Heyo, ', 'Dude, ', '여보세요, ', 'Hallo, ', 'Lol, no, ', 'Nano toka, ', 'Kíimak oolal, ', 'MURICA, ', 'Guns up, tits out, ', 'Olá, ', "This seems really stupid, but paves the way for random story and random promt."
 ]
   vm.greeting = vm.funness[Math.floor((Math.random() * vm.funness.length))];
 
