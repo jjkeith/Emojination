@@ -1,5 +1,6 @@
-var emojination = angular.module('emojination', ['ui.router', 'ui.materialize', 'sc.twemoji'])
-// adding these depencies crashes things: ['sc.twemoji'], ["ui.materialize"],
+var emojination = angular.module('emojination', ['ui.router', 'ui.materialize', 'sc.twemoji', 'ngSanitize'])
+
+emojination.constant('emojisArr', emojisArr)
 
 emojination.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -28,6 +29,12 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
     .state('prompts', {
       url: '/prompts',
       templateUrl: 'templates/prompts.html'
+    })
+    //I know the routing here is not RESTful. Need to fix.
+    .state('prompt', {
+      url: '/prompt',
+      templateUrl: 'templates/prompt.html',
+      controller: 'usersController as usersCtrl'
     })
     .state('profile', {
       url: '/profile',

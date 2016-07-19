@@ -64,11 +64,11 @@ router.get('/status', function(req, res) {
 })
 
 
-router.post('/tweets', function(req, res) {
+router.post('/stories', function(req, res) {
   User.findById(req.user._id, function(err, user) {
     if(err) return console.log(err);
     // if(err) => return err;
-    user.tweets.push({body: req.body.tweet})
+    user.stories.push({body: req.body.story})
     user.save(function(err, user) {
       if(err) return console.log(err);
       res.json(user)

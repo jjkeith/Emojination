@@ -4,13 +4,13 @@ angular.module('emojination')
   .controller('logoutController', logoutController)
   .controller('registerController', registerController)
   .controller('usersController', usersController)
-  .controller('storiesController', usersController)//not built yet
-  .controller('topicsController', usersController)//not built yet
+  // .controller('storiesController', storiesController)//not built yet
+  // .controller('promptController', promptsController)//not built yet
 
   // custom directive for the navbar
   .directive('navigationBar', navigationBar)
 
-  mainController.$inject = ['$rootScope', '$state', 'AuthService']
+  mainController.$inject = ['$rootScope', '$state', 'AuthService', '$sce', '$sanitize']
   loginController.$inject = ['$state', 'AuthService']
   logoutController.$inject = ['$state', 'AuthService']
   registerController.$inject = ['$state', 'AuthService']
@@ -23,20 +23,40 @@ angular.module('emojination')
     vm.createStory = function() {
       // post the story to an API route
       console.log("Posting new story:", vm.newStory);
-      $http.post('/user/stories', {tweet: vm.newStory})
+      $http.post('/user/stories', {story : vm.newStory})
         .success(function(data){
           console.log(data);
         })
     }
   }
 
-function mainController($rootScope, $state, AuthService) {
+function mainController($rootScope, $state, AuthService, $sce, $sanitize) {
   var vm = this
   vm.name = "Emojination"
-  vm.space = " "
-  vm.funness = ['Hi, ', 'Hello, ', 'SUP, brah, ', 'Hola, ', 'Aloha, ', 'Bonjour, ', 'こんにちは, ', '你好, ', 'Hodi, ', 'Hallå, ', 'Ciao, ', 'Hei, ', 'Wah gwaan, ', 'Halo, ', 'Kamusta, ', 'Heyo, ', 'Dude, ', '여보세요, ', 'Hallo, ', 'Lol, no, ', 'Nano toka, ', 'Kíimak oolal, ', 'MURICA, ', 'Guns up, tits out, ', 'Olá, ', "This seems really stupid, but paves the way for random story and random promt."
-]
-  vm.greeting = vm.funness[Math.floor((Math.random() * vm.funness.length))];
+  vm.hellos = ['Hi, ', 'Hello, ', 'SUP, ', 'Hola, ', 'Aloha, ', 'Bonjour, ', 'こんにちは, ', '你好, ', 'Hodi, ', 'Hallå, ', 'Ciao, ', 'Hei, ', 'Wah gwaan, ', 'Halo, ', 'Kamusta, ', 'Heyo, ', 'Dude, ', '여보세요, ', 'Hallo, ', 'Lol, no, ', 'Nano toka, ', 'Kíimak oolal, ', 'Olá, ', "This seems really stupid, but paves the way for random story and random prompt, which are features to be developd, "
+  ]
+  vm.greeting = vm.hellos[Math.floor((Math.random() * vm.hellos.length))];
+
+  randomEmojiPicker = function () {
+    twemoji.parse(emojisArr[Math.floor((Math.random() * emojisArr.length))])
+  };
+//would be much better to inject the function, but it crashes for some reason.
+  vm.randomEmoji1 = twemoji.parse(emojisArr[Math.floor((Math.random() * emojisArr.length))])
+  vm.randomEmoji2 = twemoji.parse(emojisArr[Math.floor((Math.random() * emojisArr.length))])
+  vm.randomEmoji3 = twemoji.parse(emojisArr[Math.floor((Math.random() * emojisArr.length))])
+  vm.randomEmoji4 = twemoji.parse(emojisArr[Math.floor((Math.random() * emojisArr.length))])
+  vm.randomEmoji5 = twemoji.parse(emojisArr[Math.floor((Math.random() * emojisArr.length))])
+
+  vm.randomOh1 = twemoji.parse(circlesArr[Math.floor((Math.random() * circlesArr.length))])
+  vm.randomOh2 = twemoji.parse(circlesArr[Math.floor((Math.random() * circlesArr.length))])
+  vm.randomOh3 = twemoji.parse(circlesArr[Math.floor((Math.random() * circlesArr.length))])
+  vm.randomOh4 = twemoji.parse(circlesArr[Math.floor((Math.random() * circlesArr.length))])
+
+
+
+  vm.salutations = ['What would you like to do today?', 'Nice shirt. Ready for some stories?', "Yay! Let's make some stories!"
+  ]
+  vm.profileGreeting = vm.salutations[Math.floor((Math.random() * vm.salutations.length))];
 
   $rootScope.$on('$stateChangeStart', function (event) {
     // console.log("Changing states")

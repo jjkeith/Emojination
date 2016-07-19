@@ -6,7 +6,7 @@
   <title>emojination</title>
 
   <!-- styles -->
-  <link rel="stylesheet" href="/style/style.css" media="screen" type='text/css'>
+  <link rel="stylesheet" href="/style/style.css" media="screen" type=text/css>
   <!-- Materialize CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -18,12 +18,15 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.1.9/angular-materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize.js"></script>
 
   <!-- Twemoji -->
   <script src="bower_components/twemoji/twemoji.js"></script>
   <script src="bower_components/angular-twemoji/dist/angular-twemoji.js"></script>
 
   <!-- This app -->
+
+  <script src="./emoji_arr.js"></script>
   <script src="./main.js"></script>
   <script src="./services.js"></script>
   <script src="./controllers.js"></script>
@@ -33,11 +36,17 @@
   <div ng-controller="mainController as main">
 
     <!-- Render Navbar -->
-  <div navigation-bar></div>
+    <div navigation-bar></div>
 
-  <!-- Render views -->
-  <div ui-view></div>
-      <h4 >Test Emojis: &#x1F608; &#x1F3B9; &#x1F3C1;</h4>
+    <!-- Render views -->
+    <div class="container">
+
+      <div ui-view></div>
+          <!-- <h4 >Test Emojis:
+
+          </h4> -->
+
+    </div>
   </div>
 
 

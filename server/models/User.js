@@ -7,7 +7,7 @@ var storiesSchema = new Schema({
    body: String
 })
 
-var topicsSchema = new Schema({
+var promptsSchema = new Schema({
    body: String
 })
 
@@ -15,8 +15,8 @@ var User = new Schema({
   username: String,
   password: String,
   avatar: String,
-  tweets: [storiesSchema],
-  topics: [topicsSchema]
+  stories: [storiesSchema],
+  prompts: [promptsSchema]
 })
 
 User.plugin(passportLocalMongoose)
