@@ -1,10 +1,11 @@
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo center">Emojination</a>
+      <a href="#!" class="brand-logo center">Em<small>😀</small>jinati<small>😀</small>n</a>
         <div ng-if=" main.currentUser.username !== nil">
           <ul class="left hide-on-med-and-down">
-            <li>Welcome, {{ main.currentUser.username }}!</li>
+            <li>
+              {{ main.greeting }}&nbsp{{ main.currentUser.username }}</li>
           </ul>
         </div>
       <ul class="right hide-on-med-and-down">

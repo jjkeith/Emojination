@@ -33,6 +33,10 @@ angular.module('emojination')
 function mainController($rootScope, $state, AuthService) {
   var vm = this
   vm.name = "Emojination"
+  vm.space = " "
+  vm.funness = ['Hi, ', 'Hello, ', 'SUP, brah, ', 'Hola, ', 'Aloha, ', 'Bonjour, ', 'こんにちは, ', '你好, ', 'Hodi, ', 'Hallå, ', 'Ciao, ', 'Hei, ', 'Wah gwaan, ', 'Halo, ', 'Kamusta, ', 'Heyo, ', 'Dude, ', '여보세요, ', 'Hallo, ', 'Lol, no, ', 'Nano toka, ', 'Kíimak oolal, ', 'MURICA, ', 'Guns up, tits out, ', 'Olá, '
+]
+  vm.greeting = vm.funness[Math.floor((Math.random() * vm.funness.length))];
 
   $rootScope.$on('$stateChangeStart', function (event) {
     // console.log("Changing states")
