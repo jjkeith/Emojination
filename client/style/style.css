@@ -1,0 +1,14 @@
+body {
+  font-family: 'Fredoka One', cursive;
+  color: #333;
+}
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+.alert-danger {
+  color: red;
+}
+.card-action .card {
+  padding: 0px;
+  text-align: center;
+}

@@ -1,5 +1,5 @@
-var emojination = angular.module('emojination', ['ui.router'])
-// removed ['sc.twemoji'] as a dependency, but I need that, right?
+var emojination = angular.module('emojination', ['ui.router', 'ui.materialize', 'sc.twemoji'])
+// adding these depencies crashes things: ['sc.twemoji'], ["ui.materialize"],
 
 emojination.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -25,9 +25,9 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/register.html',
       controller: 'registerController as registerCtrl'
     })
-    .state('browse', {
-      url: '/browse',
-      template: '<h3>Let us browse the topics. i.e. template not yet created — to say nothing of the rest of the back end stuff needed.</h3>'
+    .state('prompts', {
+      url: '/prompts',
+      templateUrl: 'templates/prompts.html'
     })
     .state('profile', {
       url: '/profile',
@@ -35,29 +35,29 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
       restricted: true,
       controller: 'usersController as usersCtrl'
     })
-    .state('edit-profile', {
-      url: '/edit-profile',
-      template: '<h3>Someday, once a template is created and the backend works, users will edit their profiles here.</h3>',
+    .state('profile-edit', {
+      url: '/profile/edit',
+      templateUrl: 'templates/profile-edit.html',
       restricted: true
     })
-    .state('random-prompt', {
-      url: '/ask-philippe',
+    .state('prompts/random', {
+      url: '/prompt/random',
       template: '<h3>This will be hecka cool when it works. Pseudo code is something like: <br><small>index = Math.floor(Math.random() * promptsArray.length)</small><br> and then render <br><small>promptsArray[index]</small>;</h3>',
       restricted: true
     })
-    .state('random-story', {
-      url: '/ask-philippe',
-      template: '<h3>Pseudo code is something like: <br><small>index = Math.floor(Math.random() * storiesArray.length)</small><br> and then render storiesArray[index]; — But I got a funny feeling that this is not going to work</h3>',
+    .state('prompts/:id/random', {
+      url: '/prompts/:id#storytag',
+      template: '<h3>Pseudo code for a random story is something like: <br><small>index = Math.floor(Math.random() * promptsArray.length)</small><br> and then render a random story in that array — But this will be tricky as it means that each story has to be dynmaically html tagged with its place in the array.</h3>',
       restricted: true
     })
-    .state('new-prompt', {
-      url: '/ask-philippe',
+      .state('prompt/new', {
+      url: '/prompts/new',
       template: '<h3>Add a new prompt — the real challenge here is how to serve up the emojis</h3>',
       restricted: true
     })
     .state('story-rankings', {
-      url: '/ask-philippe',
-      template: '<h3>Pseudo code is something like:<br> <small>Sort array of stories by ranking and return indices 0-9.</small></h3>',
+      url: '/story-rankings',
+      template: '<h3>Pseudo code is something like:<br> <small>Sort array of stories by ranking and return indices 0-9.</small><br>Then the stories would be served in a ol along with the prompt that generated it.</h3>',
       restricted: true // probably don't want this to be restricted, but rather linked from the main page, but gonna need to add the restriction that only logged in users can upvote.
     })
 })

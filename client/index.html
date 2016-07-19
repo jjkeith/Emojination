@@ -5,22 +5,12 @@
   <meta charset="utf-8">
   <title>emojination</title>
 
-  <!-- Temp style -->
-  <style media="screen">
-    body {
-      font-family: 'Fredoka One', cursive;
-      color: #333;
-  }
-
-  </style>
-
-
   <!-- styles -->
-  <link rel="stylesheet" href="/style/style.scss" media="screen" type='text/css'>
+  <link rel="stylesheet" href="/style/style.css" media="screen" type='text/css'>
   <!-- Materialize CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans" rel="stylesheet">
 
   <!-- scripts -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
@@ -42,31 +32,15 @@
 <body ng-app="emojination">
   <div ng-controller="mainController as main">
 
-    <!-- Navbar, awaiting movement to a partial -->
-    <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo center">Emojination</a>
-          <ul class="left hide-on-med-and-down">
-            <li>Welcome, {{ main.currentUser.username }}!</li>
-          </ul>
-          <ul class="right hide-on-med-and-down">
-            <li><a ui-sref="home">Home</a></li>
-            <li><a ui-sref="browse">Browse Topics</a></li>
-            <li><a ui-sref="profile">Your Profile</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+    <!-- Nav Bar -->
+  <div navigation-bar></div>
+
 
 <!-- <div class="container"> -->
     <div ui-view></div>
+    I 😀 emoji! | twemoji
   <!-- </div> -->
 </div>
-
-
-
-
 
 </body>
 </html>

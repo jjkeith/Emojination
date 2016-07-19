@@ -7,6 +7,9 @@ angular.module('emojination')
   .controller('storiesController', usersController)//not built yet
   .controller('topicsController', usersController)//not built yet
 
+  // custom directive for the navbar
+  .directive('navigationBar', navigationBar)
+
   mainController.$inject = ['$rootScope', '$state', 'AuthService']
   loginController.$inject = ['$state', 'AuthService']
   logoutController.$inject = ['$state', 'AuthService']
@@ -65,7 +68,6 @@ function loginController($state, AuthService) {
         console.log("Login no bueno")
         vm.error = true
         vm.errorMessage = "Invalid username and/or password"
-        // the flash container is in login.html. This is the code that populates that container.
         vm.disabled = false
         vm.loginForm = {}
       })
@@ -106,9 +108,17 @@ function registerController($state, AuthService) {
       // handle error
       .catch(function () {
         vm.error = true
-        vm.errorMessage = "Something es malo!"
+        vm.errorMessage = "Username already exists or invalid password"
         vm.disabled = false
         vm.registerForm = {}
       })
+  }
+}
+
+// Navigation directive
+function navigationBar () {
+  return {
+    restrict: 'A',
+    templateUrl: 'partials/nav.html'
   }
 }
