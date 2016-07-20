@@ -1,1 +1,35 @@
-<h1>display profile</h1>
+<h4 class="center-align">Ooh, look at you.</h4>
+
+<div class="row">
+  <div class="col s6 m3 offset-m3">
+    <h2>{{ main.currentUser.avatar}}</h2>
+  </div>
+  <div class="col s6 m3">
+    <h4>{{ main.currentUser.username}}</h4>
+    <p>{{ main.currentUser.bio }}</p>
+  </div>
+</div>
+
+
+var storySchema = new Schema({
+   body: String,
+   author: { type: Schema.Types.ObjectId, ref: 'User' },
+   prompt: { type: Schema.Types.ObjectId, ref: 'Prompt' }
+})
+
+<div class="row">
+  <div class="col s6 m3 offset-m3">
+    <h5>Your Stories</h5>
+    <ul ng-repeat="story in userStories">       
+      <li> {{ story.prompt }}: {{ story.body }}</li>
+    </ul>
+  </div>
+  <div class="col s6 m3">
+    <h5>Your Prompts</h5>
+    <ul ng-repeat="prompt in prompts">
+      <li>{{ prompt }}</li>
+    </ul>
+
+  </div>
+
+</div>

@@ -69,10 +69,8 @@ angular.module('emojination').factory('AuthService',
     }
 
     function logout() {
-
       // create a new instance of deferred
       var deferred = $q.defer()
-
       // send a get request to the server
       $http.get('/user/logout')
         // handle success
@@ -85,17 +83,14 @@ angular.module('emojination').factory('AuthService',
           user = false
           deferred.reject()
         })
-
       // return promise object
       return deferred.promise
 
     }
 
     function register(userFields) {
-
       // create a new instance of deferred
       var deferred = $q.defer()
-
       // send a post request to the server
       $http.post('/user/register',
         userFields)
@@ -111,10 +106,7 @@ angular.module('emojination').factory('AuthService',
         .error(function (data) {
           deferred.reject()
         })
-
       // return promise object
       return deferred.promise
-
     }
-
 }])

@@ -23,13 +23,13 @@ mongoose.connect(process.env.DB_URL, function(err){
 })
 
 // SASS
-sass.render({
-  file: 'style/style.scss',
-}, function(err, result) {
-  if (err){
-      console.log("sass error");
-  }
-});
+// sass.render({
+//   file: 'style/style.scss',
+// }, function(err, result) {
+//   if (err){
+//       console.log("sass error");
+//   }
+// });
 
 
 // require models

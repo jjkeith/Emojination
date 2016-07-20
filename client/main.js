@@ -1,6 +1,5 @@
 var emojination = angular.module('emojination', ['ui.router', 'ui.materialize', 'sc.twemoji', 'ngSanitize'])
 
-// emojination.constant('emojisArr', emojisArr)
 
 emojination.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -29,6 +28,13 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
       url: '/prompts',
       templateUrl: 'templates/prompts.html'
     })
+    .state('prompt-new', {
+      url: '/prompts/new',
+      templateUrl: 'templates/prompt-new.html',
+      controller: 'usersController as usersCtrl',
+      restricted: true
+    })
+    // Fix the ID thing
     .state('prompt', {
       url: '/prompts/:id',
       templateUrl: 'templates/prompt.html',
@@ -51,25 +57,19 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/profile-edit.html',
       restricted: true,
       controller: 'usersController as usersCtrl'
-
     })
-    .state('prompts/random', {
-      url: '/prompt/random',
-      template: '<h3>This will be hecka cool when it works. Pseudo code is something like: <br><small>index = Math.floor(Math.random() * promptsArray.length)</small><br> and then render <br><small>promptsArray[index]</small>;</h3>',
-      restricted: true
-    })
-    .state('prompts/:id/random', {
+    // .state('prompts-random', {
+    //   url: '/prompts/random',
+    //   template: '<h3>This will be hecka cool when it works. Pseudo code is something like: <br><small>index = Math.floor(Math.random() * promptsArray.length)</small><br> and then render <br><small>promptsArray[index]</small>;</h3>',
+    //   restricted: true
+    // })
+    .state('prompts-random', {
       url: '/prompts/:id#storytag',
       template: '<h3>Pseudo code for a random story is something like: <br><small>index = Math.floor(Math.random() * promptsArray.length)</small><br> and then render a random story in that array — But this will be tricky as it means that each story has to be dynmaically html tagged with its place in the array.</h3>',
       restricted: true
     })
-      .state('prompt/new', {
-      url: '/prompts/new',
-      template: '<h3>Add a new prompt — the real challenge here is how to serve up the emojis</h3>',
-      restricted: true
-    })
     .state('story-rankings', {
-      url: '/story-rankings',
+      url: '/stories/rankings',
       template: '<h3>Pseudo code is something like:<br> <small>Sort array of stories by ranking and return indices 0-9.</small><br>Then the stories would be served in a ol along with the prompt that generated it.</h3>',
       restricted: true // probably don't want this to be restricted, but rather linked from the main page, but gonna need to add the restriction that only logged in users can upvote.
     })

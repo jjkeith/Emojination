@@ -1,6 +1,6 @@
 <div class="row center-align">
   <div class="col m10 s12 offset-m1 offset-s0">
-    <h2>{{ main.homeGreeting }}</h2>
+    <h2>{{ main.salutation }}</h2>
   </div>
 </div>
 
@@ -16,7 +16,7 @@
     <a ui-sref="prompts"><h1 ng-bind-html="main.randomEmojis[2] | twemoji"></h1>Browse Prompts</a>
   </div>
   <div class="col s12 m2">
-    <a ui-sref="prompts/new"><h1 ng-bind-html="main.randomEmojis[3] | twemoji"></h1>Add New Prompt</a>
+    <a ui-sref="prompt-new"><h1 ng-bind-html="main.randomEmojis[3] | twemoji"></h1>Add New Prompt</a>
   </div>
   <div class="col s12 m2">
     <a ui-sref="top-stories"><h1 ng-bind-html="main.randomEmojis[4] | twemoji"></h1>Top Stories</a>

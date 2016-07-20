@@ -1,0 +1,5 @@
+<h4 class="center-align">Click on emojis to add them to the prompt: </h4>
+<h4 ng-bind-html="usersCtrl.promptForm.prompt | twemoji"></h4>
+<div class="emoji-box">
+  <ul class="emoji-picker" ng-repeat="emoji in registerCtrl.emojisArr">
+    <li ng-click="registerCtrl.avatarSelector(emoji)" class="emoji-picker" ng-bind-html="registerCtrl.emojis[$index] | twemoji"></li>
