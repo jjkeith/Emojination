@@ -8,7 +8,7 @@ angular.module('emojination')
   // custom directive for the navbar
   .directive('navigationBar', navigationBar)
 
-  mainController.$inject = ['$rootScope', '$state', 'AuthService']
+  mainController.$inject = ['$rootScope', '$state', 'AuthService', '$http']
   loginController.$inject = ['$state', 'AuthService']
   logoutController.$inject = ['$state', 'AuthService']
   registerController.$inject = ['$state', 'AuthService']
@@ -23,7 +23,7 @@ promptsArray = []
     vm.createStory = function() {
       // post the story to an API route
       console.log("Posting new story:", vm.newStory);
-      console.log("What's in the schema: ", storiesSchema.body);
+      console.log("What's in the schema: ", Story.body);
       $http.post('/user/stories', {story : vm.newStory})
         .success(function(data){
           console.log(data);
@@ -39,10 +39,13 @@ promptsArray = []
 
   }
 
-function mainController($rootScope, $state, AuthService, $sce, $sanitize) {
+function mainController($rootScope, $state, AuthService, $http) {
   var vm = this
   vm.name = "Emojination"
-  vm.hellos = ['Hi, ', 'Hello, ', 'SUP, ', 'Hola, ', 'Aloha, ', 'Bonjour, ', 'こんにちは, ', '你好, ', 'Hodi, ', 'Hallå, ', 'Ciao, ', 'Hei, ', 'Wah gwaan, ', 'Halo, ', 'Kamusta, ', 'Heyo, ', 'Dude, ', '여보세요, ', 'Hallo, ', 'Lol, no, ', 'Nano toka, ', 'Kíimak oolal, ', 'Olá, ', "This seems really stupid, but paves the way for random story and random prompt, which are features to be developd, "
+
+  vm.emojisArr = emojisArr
+
+  vm.hellos = ['Hi, ', 'Hello, ', "'Sup, ", 'Hola, ', 'Aloha, ', 'Bonjour, ', 'こんにちは, ', '你好, ', 'Hodi, ', 'Hallå, ', 'Ciao, ', 'Hei, ', 'Wah gwaan, ', 'Halo, ', 'Kamusta, ', 'Heyo, ', 'Dude, ', '여보세요, ', 'Hallo, ', 'Nano toka, ', 'Kíimak oolal, ', 'Olá, '
   ]
   vm.greeting = vm.hellos[Math.floor(Math.random() * vm.hellos.length)];
 
@@ -55,24 +58,14 @@ function mainController($rootScope, $state, AuthService, $sce, $sanitize) {
   };
 
   vm.randomEmojis = [randomEmojiPicker(), randomEmojiPicker(), randomEmojiPicker(), randomEmojiPicker(), randomEmojiPicker()]
-  // vm.randomEmoji1 = randomEmojiPicker()
-  // vm.randomEmoji2 = twemoji.parse(emojisArr[Math.floor((Math.random() * emojisArr.length))])
-  // vm.randomEmoji3 = twemoji.parse(emojisArr[Math.floor((Math.random() * emojisArr.length))])
-  // vm.randomEmoji4 = twemoji.parse(emojisArr[Math.floor((Math.random() * emojisArr.length))])
-  // vm.randomEmoji5 = twemoji.parse(emojisArr[Math.floor((Math.random() * emojisArr.length))])
 
   randomOhPicker = function() {
     return twemoji.parse(circlesArr[Math.floor((Math.random() * circlesArr.length))])
   }
 
   vm.randomOhs = [randomOhPicker(), randomOhPicker()]
-  // vm.randomOh1 = twemoji.parse(circlesArr[Math.floor((Math.random() * circlesArr.length))])
-  // vm.randomOh2 = twemoji.parse(circlesArr[Math.floor((Math.random() * circlesArr.length))])
-  // vm.randomOh3 = twemoji.parse(circlesArr[Math.floor((Math.random() * circlesArr.length))])
-  // vm.randomOh4 = twemoji.parse(circlesArr[Math.floor((Math.random() * circlesArr.length))])
 
   $rootScope.$on('$stateChangeStart', function (event) {
-    // console.log("Changing states")
     AuthService.getUserStatus()
       .then(function(data){
         vm.currentUser = data.data.user
@@ -80,7 +73,21 @@ function mainController($rootScope, $state, AuthService, $sce, $sanitize) {
         // when a user is not logged in, data.data == false;
       })
   })
+
+  vm.editUser = function(id) {
+    $http.patch('/user/' + id, vm.editForm)
+    .success(function (data) {
+      console.log(data)
+      $state.go('profile')
+    })
+  }
+
+  vm.avatarSelector = function (emoji) {
+    vm.registerForm.avatar = emoji
+    console.log("clicked: ", emoji)
+  }
 }
+
 
 // Login controller
 function loginController($state, AuthService) {
@@ -115,7 +122,7 @@ function loginController($state, AuthService) {
 // Logout Controller
 function logoutController($state, AuthService) {
   var vm = this
-  vm.logout = function () {
+  vm.logout = function() {
 
     // call logout from service
     AuthService.logout()
@@ -123,11 +130,27 @@ function logoutController($state, AuthService) {
         $state.go('landing')
       })
   }
+
+  vm.destroyUser = function(id) {
+    vm.logout();
+    $http.delete('/user/' + id, vm.editForm)
+    .success(function (data) {
+      console.log(data)
+      $state.go('landing')
+    })
+  }
+
 }
 
 // Register controller
 function registerController($state, AuthService) {
   var vm = this
+  vm.emojisArr = emojisArr
+
+  vm.emojis = emojisArr.map(function (el) {
+    return twemoji.parse(el)
+  })
+
   vm.register = function () {
 
     // initial values
@@ -135,20 +158,25 @@ function registerController($state, AuthService) {
     vm.disabled = true
 
     // call register from service
-    AuthService.register(vm.registerForm.username, vm.registerForm.password)
+    AuthService.register(vm.registerForm)
       // handle success
       .then(function () {
-        $state.go('profile')
+        $state.go('home')
         vm.disabled = false
         vm.registerForm = {}
       })
       // handle error
       .catch(function () {
         vm.error = true
-        vm.errorMessage = "Username already exists or invalid password"
+        vm.errorMessage = "Whoops! Username already exists or invalid password"
         vm.disabled = false
         vm.registerForm = {}
       })
+  }
+
+  vm.avatarSelector = function (emoji) {
+    vm.registerForm.avatar = emoji
+    console.log("clicked: ", emoji)
   }
 }
 

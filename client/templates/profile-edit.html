@@ -1,38 +1,42 @@
 <div class="row">
-  <div class="col s6 offset-s3">
-    <h1>Edit {{ main.currentUser.username }}'s Profile</h1>
-    <!-- <div ng-show="registerCtrl.error" class="alert alert-danger">{{registerCtrl.errorMessage}}</div> -->
+  <div class="col s12">
+    <h4 class="center-align">Edit {{ main.currentUser.username }}'s Profile</h4>
   </div>
 </div>
-<form class="form" ng-submit="userCtrl.editUser()">
-<div class="row">
-  <div class="col s6 offset-s3">
-    <label>Add a bio</label>
-      <div ng-if="main.currentUser.bio !== nil">
-        <input type="textarea" class="form-control" placeholder="main.currentUser.bio" name="bio" ng-model="main.currentUser.bio">
+
+<form class="form" ng-submit="main.editUser(main.currentUser._id)">
+  <div class="row">
+    <div class="col s12 m6">
+      <label>Tell us about yourself</label>
+        <div ng-if="main.currentUser.bio !== nil">
+          <textarea id="textarea1" class="materialize-textarea form-control" ng-model="main.editForm.bio">Edit your bio</textarea>
+          <label for="textarea1">Textarea</label>
+        </div>
+        <div ng-if="main.currentUser.bio == nil" class="input-field">
+          <textarea id="textarea1" class="materialize-textarea form-control" ng-model="main.editForm.bio" >Enter bio here</textarea>
+          <label for="textarea1"> {{ main.currentUser.bio }} </label>
+        </div>
+    </div>
+
+    <div class="col s12 m6">
+      <p>Change your emoji (scroll down for more):</p>
+      <h4 class="center-align" ng-if="main.editForm.avatar" ng-bind-html="main.editForm.avatar | twemoji"></h4>
+      <div class="emoji-box">
+        <ul class="emoji-picker" ng-repeat="emoji in main.emojisArr">
+          <li ng-click="main.avatarSelector(emoji)" class="emoji-picker" ng-bind-html="main.emojis[$index] | twemoji"></li>
+        </ul>
       </div>
-      <div ng-if="main.currentUser.bio == nil">
-        <input type="textarea" class="form-control" placeholder="Enter bio here" name="bio" ng-model="main.currentUser.bio">
-      </div>
-  </div>
-</div>
+    </div>
 
-<div class="row">
-  <div class="col s4 offset-s3">
-    <label>Choose an emoji to represent you:</label>
+   </div> <!--close row -->
+
+  <div class="row">
+    <div class="col s12 m2 offset-m4">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+    <div class="col s12 m2 offset-m4 btn btn-default" ng-controller="logoutController as logoutCtrl">
+      <a ng-click='logoutCtrl.logout()' >Logout</a>
+    </div>
 
   </div>
-  <div class="col s2">
-    <p>
-      imaginary dropdown menu of emojis
-      <!-- which, of course, will be connected to the controller -->
-    </p>
-  </div>
-
-</div>
-<div class="row">
-  <div class="col s1 offset-s7">
-    <button type="submit" class="btn btn-default" ng-disabled="registerCtrl.disabled">Register</button>
-  </div>
-</div>
 </form>

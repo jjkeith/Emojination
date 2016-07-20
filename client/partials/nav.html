@@ -9,9 +9,9 @@
           </ul>
         </div>
       <ul class="right hide-on-med-and-down">
-//fix this later
 
         <li ng-if="main.currentUser.username !== nil"><a ui-sref="home">Home</a></li>
+        <li ng-if="main.currentUser.username == nil"><a ui-sref="landing">Home</a></li>
         <li><a ui-sref="prompts">Browse Topics</a></li>
 
             <!-- Dropdown Trigger -->
@@ -29,7 +29,7 @@
 <ul id='navDropdown' class='dropdown-content'>
     <li><a href="javascript:void(0);" ui-sref="profile">View Profile</a></li>
     <li><a href="javascript:void(0);" ui-sref="profile-edit">Edit Profile</a></li>
-    <li><a href="javascript:void(0);">Your Stories</a></li>
+    <!-- <li><a href="javascript:void(0);">Your Stories</a></li> -->
     <li><a href="javascript:void(0);">Your Up Votes</a></li>
     <div ng-controller="logoutController as logoutCtrl">
       <li><a ng-click='logoutCtrl.logout()'>Log Out</a></li></div>

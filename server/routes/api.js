@@ -1,11 +1,11 @@
 var express = require('express')
-var router = express.Router()
-var passport = require('passport')
+  , router = express.Router()
+  , passport = require('passport')
 
-var models = require('../models/User.js')
+  , models = require('../models/User.js')
 
 router.post('/register', function(req, res) {
-  User.register(new User({ username: req.body.username }),
+  User.register(new User({ username: req.body.username, avatar: req.body.avatar }),
     req.body.password, function(err, account) {
     if (err) {
       return res.status(500).json({
@@ -14,7 +14,8 @@ router.post('/register', function(req, res) {
     }
     passport.authenticate('local')(req, res, function () {
       return res.status(200).json({
-        status: 'Registration successful!'
+        status: 'Registration successful!',
+        user: account
       })
     })
   })
@@ -63,6 +64,23 @@ router.get('/status', function(req, res) {
   })
 })
 
+router.patch('/:id', function(req, res) {
+  console.log("Patching user...")
+  console.log(req.body)
+  User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, user) {
+    if (err) throw err;
+    res.json({success: true, message: "User updated!", user: user})
+  })
+})
+
+router.delete('/:id', function(req, res) {
+  console.log("Deleting user...")
+  console.log(req.body)
+  User.findOneAndRemove({_id: req.params.id}, req.body, function(err, user) {
+    if (err) throw err;
+    res.json({success: true, message: "User deleted!", user: user})
+  })
+})
 
 router.post('/stories', function(req, res) {
   User.findById(req.user._id, function(err, user) {

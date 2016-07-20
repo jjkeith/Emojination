@@ -1,6 +1,6 @@
 var emojination = angular.module('emojination', ['ui.router', 'ui.materialize', 'sc.twemoji', 'ngSanitize'])
 
-emojination.constant('emojisArr', emojisArr)
+// emojination.constant('emojisArr', emojisArr)
 
 emojination.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -29,7 +29,6 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
       url: '/prompts',
       templateUrl: 'templates/prompts.html'
     })
-    //I know the routing here is not RESTful. Need to fix.
     .state('prompt', {
       url: '/prompts/:id',
       templateUrl: 'templates/prompt.html',
@@ -50,7 +49,9 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
     .state('profile-edit', {
       url: '/profile/edit',
       templateUrl: 'templates/profile-edit.html',
-      restricted: true
+      restricted: true,
+      controller: 'usersController as usersCtrl'
+
     })
     .state('prompts/random', {
       url: '/prompt/random',

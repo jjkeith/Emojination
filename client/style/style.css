@@ -5,6 +5,7 @@ body {
 p {
   font-family: 'Open Sans', sans-serif;
 }
+
 .alert-danger {
   color: red;
 }
@@ -14,4 +15,22 @@ p {
 }
 .navbar-fixed {
   /*padding: 5px;*/
+}
+div.emoji-box {
+  height: 200px;
+  width: 100%;
+  overflow: scroll;
+}
+
+ul.emoji-picker,
+ul.emoji-picker li {
+  margin: 0;
+  padding: 0;
+  cursor:pointer;
+}
+
+ul.emoji-picker li {
+  float: left;
+  width: 20px;
+  min-height: 20px;
 }

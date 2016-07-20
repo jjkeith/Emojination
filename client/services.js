@@ -34,6 +34,7 @@ angular.module('emojination').factory('AuthService',
       })
       // handle error
       .error(function (data) {
+        console.log(data);
         user = false
       })
     }
@@ -90,14 +91,14 @@ angular.module('emojination').factory('AuthService',
 
     }
 
-    function register(username, password) {
+    function register(userFields) {
 
       // create a new instance of deferred
       var deferred = $q.defer()
 
       // send a post request to the server
       $http.post('/user/register',
-        {username: username, password: password})
+        userFields)
         // handle success
         .success(function (data, status) {
           if(status === 200 && data.status){

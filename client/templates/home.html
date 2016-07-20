@@ -1,7 +1,6 @@
 <div class="row center-align">
   <div class="col m10 s12 offset-m1 offset-s0">
-    <h2>{{ main.profileGreeting }}</h2>
-
+    <h2>{{ main.homeGreeting }}</h2>
   </div>
 </div>
 
@@ -23,8 +22,3 @@
     <a ui-sref="top-stories"><h1 ng-bind-html="main.randomEmojis[4] | twemoji"></h1>Top Stories</a>
   </div>
 </div>
-<div class="row">
-  <div class="col s12 m2 offset-m5 offset-s0">
-    <div ng-controller="logoutController as logoutCtrl">
-      <a ng-click='logoutCtrl.logout()' class="btn btn-default">Logout</a>
-  </div>

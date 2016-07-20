@@ -32,8 +32,10 @@ sass.render({
 });
 
 
-// user schema/model
+// require models
 var User = require('./models/User.js')
+var User = require('./models/Story.js')
+var User = require('./models/Prompt.js')
 
 // create instance of express
 var app = express()
@@ -57,27 +59,13 @@ app.use(passport.session())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(favicon('favicon.ico'));
 
-// routes
-app.use('/user/', routes)
-
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../client', 'index.html'))
 })
 
-// error hndlers
-app.use(function(req, res, next) {
-  var err = new Error('Not Found')
-  err.status = 404
-  next(err)
-})
 
-app.use(function(err, req, res) {
-  res.status(err.status || 500)
-  res.end(JSON.stringify({
-    message: err.message,
-    error: {}
-  }))
-})
+// routes
+app.use('/user', routes)
 
 app.listen(port, function() {
   console.log("Listening for requests on port:", port)
