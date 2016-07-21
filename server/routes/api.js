@@ -92,15 +92,15 @@ router.delete('/:id', function(req, res) {
 })
 
 router.post('/stories', function(req, res) {
+  console.log("backend");
   console.log(req.body);
   Story.create(req.body, function(err, story){
-
-        if(err) return console.log(err)
-  	  story.author = req.body.username
-  	  story.prompt = req.body.prompt
-  	  story.save(function(err, story){
-          if(err) return console.log(err)
-          res.json(story)
+    if(err) return console.log(err)
+  	story.author = req.body.username
+  	story.prompt = req.body.prompt
+  	story.save(function(err, story){
+      if(err) throw err;
+      res.json(story)
       })
   })
 })

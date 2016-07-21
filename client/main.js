@@ -31,44 +31,39 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
     .state('prompt-new', {
       url: '/prompts/new',
       templateUrl: 'templates/prompt-new.html',
-      controller: 'usersController as usersCtrl',
       restricted: true
     })
     // Fix the ID thing
     .state('prompt', {
       url: '/prompts/:id',
       templateUrl: 'templates/prompt.html',
-      controller: 'usersController as usersCtrl',
       restricted: true
     })
     .state('home', {
       url: '/home',
       templateUrl: 'templates/home.html',
-      restricted: true,
-      controller: 'usersController as usersCtrl'
+      restricted: true
     })
     .state('profile', {
       url: '/profile',
       templateUrl: 'templates/profile.html',
-      restricted: true,
-      controller: 'usersController as usersCtrl'
+      restricted: true
     })
     .state('profile-edit', {
       url: '/profile/edit',
       templateUrl: 'templates/profile-edit.html',
-      restricted: true,
-      controller: 'usersController as usersCtrl'
+      restricted: true
     })
     .state('prompt-random', {
       url: '/prompts/random',
       template: '<h3>This will be hecka cool when it works. Pseudo code is something like: <br><small>index = Math.floor(Math.random() * promptsArray.length)</small><br> and then render <br><small>promptsArray[index]</small>;</h3>',
       restricted: true
     })
-    .state('story-rankings', {
-      url: '/stories/rankings',
-      template: '<h3>Pseudo code is something like:<br> <small>Sort array of stories by ranking and return indices 0-9.</small><br>Then the stories would be served in a ol along with the prompt that generated it.</h3>',
-      restricted: true // probably don't want this to be restricted, but rather linked from the main page, but gonna need to add the restriction that only logged in users can upvote.
-    })
+    // .state('story-rankings', {
+    //   url: '/stories/rankings',
+    //   template: '<h3>Pseudo code is something like:<br> <small>Sort array of stories by ranking and return indices 0-9.</small><br>Then the stories would be served in a ol along with the prompt that generated it.</h3>',
+    //   restricted: true
+    // })
 })
 
 

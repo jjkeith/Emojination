@@ -3,7 +3,6 @@ angular.module('emojination')
   .controller('loginController', loginController)
   .controller('logoutController', logoutController)
   .controller('registerController', registerController)
-  .controller('usersController', usersController)
 
   // custom directive for the navbar
   .directive('navigationBar', navigationBar)
@@ -12,56 +11,46 @@ angular.module('emojination')
   loginController.$inject = ['$state', 'AuthService']
   logoutController.$inject = ['$state', 'AuthService', '$http']
   registerController.$inject = ['$state', 'AuthService']
-  usersController.$inject = ['$http']
 
-
-  function usersController ($http) {
-    var vm = this
-
-    // post a story to an API route
-    vm.createStory = function() {
-      var story = JSON.stringify(vm.storyForm.newStory)
-      console.log("Posting new story:", vm.storyForm.newStory);
-      $http.post('/user/stories', {story : story})
-        .success(function(data){
-          console.log(data);
-          vm.storyForm = {}
-        })
-    }
-
-    // post a prompt to an API route
-    vm.createPrompt = function() {
-      console.log("Creating new prompt");
-      $http.post('/user/prompts', {prompt : vm.newPrompt})
-        .success(function(data){
-          console.log(data);
-        })
-    }
-
-    vm.userStories = function() {
-      $http.get('/user/stories')
-    }
-  }
 
 function mainController($rootScope, $state, AuthService, $http) {
   var vm = this
   vm.name = "Emojination"
+
+  // includes the array of emojis
   vm.emojisArr = emojisArr
-  // vm.editForm.avatar = {}
 
-  vm.emojis = emojisArr.map(function (el) {
-    return twemoji.parse(el)
-  })
+  // post a story to an API route // posting only an id
+  vm.createStory = function() {
+    var story = JSON.stringify(vm.storyForm.newStory)
+    console.log("Posting new story:", vm.storyForm.newStory);
+    console.log("Author:", vm.currentUser);
+    console.log("Prompt:", vm.prompt);
+    $http.post('/user/stories', {story : vm.storyForm.newStory, author : vm.currentUser, prompt : vm.prompt})
+      .success(function(data){
+        console.log(data);
+        vm.storyForm = {}
+      })
+  }
 
-  // for calling routes using buttons
-  // vm.go = function ( path ) {
-  //   $location.path( path );
-  // };
+  //returns a user's stories // doesn't work
+  vm.userStories = function() {
+    $http.get('/user/stories')
+  }
 
-  // actived by ng-click on editForm
-  vm.avatarSelector = function(emoji) {
-    vm.editForm.avatar = emoji
-    console.log("clicked: ", emoji)
+  //returns a user's prompts // doesn't work
+  vm.userPrompts = function() {
+    $http.get('/user/prompts')
+  }
+
+
+  // post a prompt to an API route
+  vm.createPrompt = function() {
+    console.log("Creating new prompt");
+    $http.post('/user/prompts', {prompt : vm.newPrompt})
+      .success(function(data){
+        console.log(data);
+      })
   }
   //
   // vm.newPrompt = function(emoji) {
@@ -70,6 +59,31 @@ function mainController($rootScope, $state, AuthService, $http) {
   //   console.log("clicked: ", emoji)
   //   prompt.push(emoji)
   // }
+
+  // Patches to the user object
+  vm.editUser = function(id) {
+    console.log(vm.editForm);
+    $http.patch('/user/' + id, vm.editForm)
+    .success(function (data) {
+      console.log(data)
+      $state.go('profile')
+      $state.go('profile')
+    })
+  }
+
+
+// Below are cotent-driving functions and arrays
+
+  // Parses emojis for the pickers
+  vm.emojis = emojisArr.map(function (el) {
+    return twemoji.parse(el)
+  })
+
+  // actived by ng-click on editForm
+  vm.avatarSelector = function(emoji) {
+    vm.editForm.avatar = emoji
+    console.log("clicked: ", emoji)
+  }
 
   // array of hellos for hello() to access
   vm.hellos = ['Hallo, ', '여보세요, ', 'Hi, ', 'Hello, ', "'Sup, ", 'Hola, ', 'Aloha, ', 'Kíimak oolal, ', 'Bonjour, ', 'Nano toka, ', 'こんにちは, ', '你好, ', 'Kamusta, ', 'Hodi, ', 'Hallå, ', 'Halo, ', 'Ciao, ', 'Hei, ']
@@ -118,16 +132,6 @@ function mainController($rootScope, $state, AuthService, $http) {
         vm.currentUser = data.data.user
       })
   })
-
-  // Patches to the user object
-  vm.editUser = function(id) {
-    console.log(vm.editForm);
-    $http.patch('/user/' + id, vm.editForm)
-    .success(function (data) {
-      console.log(data)
-      $state.go('profile')
-    })
-  }
 
 }
 
@@ -210,14 +214,6 @@ function registerController($state, AuthService) {
         vm.registerForm = {}
       })
   }
-
-  // vm.editUser = function(id) {
-  //   $http.patch('/user/' + id, vm.registerForm)
-  //   .success(function (data) {
-  //     console.log(data)
-  //     $state.go('profile')
-  //   })
-  // }
 
   // actived by ng-click on registraterForm
   vm.avatarSelector = function (emoji) {
