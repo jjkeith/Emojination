@@ -6,6 +6,7 @@ var Schema = mongoose.Schema
 var storySchema = new Schema({
    body: String,
    author: { type: Schema.Types.ObjectId, ref: 'User' },
+   username: String,
    prompt: { type: Schema.Types.ObjectId, ref: 'Prompt' }
 })
 

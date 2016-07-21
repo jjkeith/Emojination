@@ -7,13 +7,13 @@ angular.module('emojination')
   // custom directive for the navbar
   .directive('navigationBar', navigationBar)
 
-  mainController.$inject = ['$rootScope', '$state', 'AuthService', '$http']
+  mainController.$inject = ['$rootScope', '$state', 'AuthService', '$http', '$stateParams']
   loginController.$inject = ['$state', 'AuthService']
   logoutController.$inject = ['$state', 'AuthService', '$http']
   registerController.$inject = ['$state', 'AuthService']
 
 
-function mainController($rootScope, $state, AuthService, $http) {
+function mainController($rootScope, $state, AuthService, $http, $stateParams) {
   var vm = this
   vm.name = "Emojination"
 
@@ -23,10 +23,10 @@ function mainController($rootScope, $state, AuthService, $http) {
   // post a story to an API route // posting only an id
   vm.createStory = function(story, user, prompt ) {
     var story = JSON.stringify(vm.storyForm.newStory)
-    console.log("Posting new story:", vm.storyForm.newStory);
-    console.log("Author:", vm.currentUser);
-    console.log("Prompt:", vm.prompt);
-    $http.post('/user/stories', {story : vm.storyForm.newStory, author : vm.currentUser, prompt : vm.prompt})
+    var newStory = {body : vm.storyForm.newStory, author : vm.currentUser._id, username: vm.currentUser.username, prompt: $stateParams.id}
+
+    console.log(newStory)
+    $http.post('/user/stories', newStory)
       .success(function(data){
         console.log(data);
         vm.storyForm = {}
@@ -128,11 +128,8 @@ function mainController($rootScope, $state, AuthService, $http) {
 function loginController($state, AuthService) {
   var vm = this
   vm.login = function () {
-
-    // initial values
     vm.error = false
     vm.disabled = true
-
     // call login from service
     AuthService.login(vm.loginForm.username, vm.loginForm.password)
       .then(function () {

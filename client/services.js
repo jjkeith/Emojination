@@ -69,21 +69,16 @@ angular.module('emojination').factory('AuthService',
     }
 
     function logout() {
-      // create a new instance of deferred
       var deferred = $q.defer()
-      // send a get request to the server
       $http.get('/user/logout')
-        // handle success
         .success(function (data) {
           user = false
           deferred.resolve()
         })
-        // handle error
         .error(function (data) {
           user = false
           deferred.reject()
         })
-      // return promise object
       return deferred.promise
 
     }
@@ -109,4 +104,5 @@ angular.module('emojination').factory('AuthService',
       // return promise object
       return deferred.promise
     }
+
 }])

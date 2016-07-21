@@ -55,7 +55,7 @@ router.get('/logout', function(req, res) {
 })
 
 router.get('/stories', function(req, res) {
-  Story.findOne({'author': req.body.username }, 'body prompt', function (err, story) {
+  Story.findOne({'username': req.body.username }, 'body prompt', function (err, story) {
     if (err) throw err;
     console.log(story.prompt + ': ' + 'story.body' )
   })
@@ -88,12 +88,10 @@ router.delete('/:id', function(req, res) {
 })
 
 router.post('/stories', function(req, res) {
-  console.log("backend"); // this isn't logging; stories post, but only id.
-  console.log(req.body);
   Story.create(req.body, function(err, story){
-    if(err) return console.log(err)
-  	story.author = req.body.username
-  	story.prompt = req.body.prompt
+    if(err) throw err
+  	// story.author = req.body.username
+  	// story.prompt = req.body.prompt
   	story.save(function(err, story){
       if(err) throw err;
       res.json(story)
@@ -101,5 +99,20 @@ router.post('/stories', function(req, res) {
   })
 })
 
+router.get('/prompts', function(req, res) {
+  console.log(req.body);
+  res.status(200).json({
+    status: true,
+    prompts: req.prompt
+  })
+
+})
+
+
+
+
+// route to get all prompts
+// going to the 'prompts' state on the front should make a request for those prompts, then list on the front end.
+// clicking on a prompt should go to the single prompt state, where the form for adding stories should be.
 
 module.exports = router

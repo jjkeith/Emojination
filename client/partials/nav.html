@@ -25,7 +25,7 @@
           <a ui-sref="home">Home</a></li>
         <li ng-if="main.currentUser.username == null">
           <a ui-sref="landing">Home</a></li>
-        <li><a ui-sref="prompts">Browse Topics</a></li>
+        <li><a ui-sref="prompts">Browse Prompts</a></li>
 
             <!-- Dropdown Trigger -->
             <li ng-if="main.currentUser.username !== nil"><a class='dropdown-button ' href='javascript:void(0);' data-activates='navDropdown' dropdown data-hover="true">
@@ -40,7 +40,7 @@
 
 <!-- Dropdown Structure -->
 <ul id='navDropdown' class='dropdown-content'>
-    <li><a href="javascript:void(0);" ui-sref="profile">View Profile</a></li>
+    <li ng-class="main.color" class="-text"><a href="javascript:void(0);" ui-sref="profile">View Profile</a></li>
     <li><a href="javascript:void(0);" ui-sref="profile-edit">Edit Profile</a></li>
     <!-- <li><a href="javascript:void(0);">Your Stories</a></li> -->
     <!-- <li><a href="javascript:void(0);">Your Up Votes</a></li> -->
