@@ -10,7 +10,7 @@ angular.module('emojination')
 
   mainController.$inject = ['$rootScope', '$state', 'AuthService', '$http']
   loginController.$inject = ['$state', 'AuthService']
-  logoutController.$inject = ['$state', 'AuthService']
+  logoutController.$inject = ['$state', 'AuthService', '$http']
   registerController.$inject = ['$state', 'AuthService']
   usersController.$inject = ['$http']
 
@@ -20,10 +20,12 @@ angular.module('emojination')
 
     // post a story to an API route
     vm.createStory = function() {
-      console.log("Posting new story:", vm.newStory);
-      $http.post('/stories', {story : vm.newStory})
+      var story = JSON.stringify(vm.storyForm.newStory)
+      console.log("Posting new story:", vm.storyForm.newStory);
+      $http.post('/user/stories', {story : story})
         .success(function(data){
           console.log(data);
+          vm.storyForm = {}
         })
     }
 
@@ -35,46 +37,62 @@ angular.module('emojination')
           console.log(data);
         })
     }
-    vm.userStories = function() {
-      $http.get('/stories')
-    }
 
-    //   vm.userStories = mongoose.model('Story', storySchema);
-    //   Story.findOne({ 'author': vm.currentUser }, 'body prompt', function (err, person) {
-    //     if (err) throw err;
-    //     console.log(story.prompt + ': ' + 'story.body' )
-    //   })
-    // }
+    vm.userStories = function() {
+      $http.get('/user/stories')
+    }
   }
 
 function mainController($rootScope, $state, AuthService, $http) {
   var vm = this
   vm.name = "Emojination"
   vm.emojisArr = emojisArr
+  // vm.editForm.avatar = {}
 
   vm.emojis = emojisArr.map(function (el) {
     return twemoji.parse(el)
   })
 
-  // actived by ng-click on editForm
-  avatarSelector = function (emoji) {
-    console.log("clicked: ", emoji)
-    vm.editForm.avatar = emoji
+  // for calling routes using buttons
+  vm.go = function ( path ) {
+    $location.path( path );
   };
+  // actived by ng-click on editForm
+  vm.avatarSelector = function(emoji) {
+    vm.editForm.avatar = emoji
+    console.log("clicked: ", emoji)
+  }
+  //
+  // vm.newPrompt = function(emoji) {
+  //   vm.emoji = emoji
+  //   prompt = []
+  //   console.log("clicked: ", emoji)
+  //   prompt.push(emoji)
+  // }
 
-//
-  vm.hellos = ['Hi, ']
-
-  // , 'Hello, ', "'Sup, ", 'Hola, ', 'Aloha, ', 'Bonjour, ', 'こんにちは, ', '你好, ', 'Hodi, ', 'Hallå, ', 'Ciao, ', 'Hei, ', 'Wah gwaan, ', 'Halo, ', 'Kamusta, ', 'Heyo, ', 'Dude, ', '여보세요, ', 'Hallo, ', 'Nano toka, ', 'Kíimak oolal, ', 'Olá, ']
+  // array of hellos for hello() to access
+  vm.hellos = ['Hallo, ', '여보세요, ', 'Hi, ', 'Hello, ', "'Sup, ", 'Hola, ', 'Aloha, ', 'Kíimak oolal, ', 'Bonjour, ', 'Nano toka, ', 'こんにちは, ', '你好, ', 'Kamusta, ', 'Hodi, ', 'Hallå, ', 'Halo, ', 'Ciao, ', 'Hei, ']
 
   // Randomly selects a hello from hellos
   vm.hello = vm.hellos[Math.floor(Math.random() * vm.hellos.length)];
 
   // array of salutations for salutation() to access
-  vm.salutations = ['What would you like to do today?', 'Nice shirt. Ready for some stories?', "Yay! Let's make some stories!"]
+  vm.salutations = ['What would you like to do today?', 'Nice shirt. Ready for some stories?', "Yay! Let's make some stories!", "Yo, let's do this!", "Light the campfire, we are gonna tell some emoji stories!"]
 
   // Randomly selects a salutation from salutations
   vm.salutation = vm.salutations[Math.floor(Math.random() * vm.salutations.length)];
+
+  // array of sups for sup() to access
+  vm.sups = ['Look at you.', 'Ooh, you fancy!', "Noice profile, brah", "Sweet emoji'ing!", "Perky profile greeting!", "Exclamation point. Period."]
+
+  // Randomly selects a sup from sups
+  vm.sup = vm.sups[Math.floor(Math.random() * vm.sups.length)];
+
+  // array of colors for color() to access
+  vm.colors = ['red', 'pink', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber', 'orange', 'deep-orange']
+
+  // randomly selects a color from colors
+  vm.color = vm.colors[Math.floor(Math.random() * vm.colors.length)];
 
 // Randomly selects from an array of emojis
   randomEmojiPicker = function() {
@@ -102,6 +120,7 @@ function mainController($rootScope, $state, AuthService, $http) {
 
   // Patches to the user object
   vm.editUser = function(id) {
+    console.log(vm.editForm);
     $http.patch('/user/' + id, vm.editForm)
     .success(function (data) {
       console.log(data)
@@ -140,7 +159,7 @@ function loginController($state, AuthService) {
 
 
 // Logout Controller
-function logoutController($state, AuthService) {
+function logoutController($state, AuthService, $http) {
   var vm = this
   vm.logout = function() {
 
@@ -152,9 +171,9 @@ function logoutController($state, AuthService) {
   }
 
   // deletes a user object
-  vm.destroyUser = function(id) {
-    vm.logout();
-    $http.delete('/user/' + id, vm.editForm)
+  vm.destroyUser = function(user) {
+    // vm.logout();
+    $http.delete('/user/' + user._id)
     .success(function (data) {
       console.log(data)
       $state.go('landing')
@@ -190,6 +209,14 @@ function registerController($state, AuthService) {
         vm.registerForm = {}
       })
   }
+
+  // vm.editUser = function(id) {
+  //   $http.patch('/user/' + id, vm.registerForm)
+  //   .success(function (data) {
+  //     console.log(data)
+  //     $state.go('profile')
+  //   })
+  // }
 
   // actived by ng-click on registraterForm
   vm.avatarSelector = function (emoji) {

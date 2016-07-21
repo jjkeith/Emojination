@@ -38,7 +38,8 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
     .state('prompt', {
       url: '/prompts/:id',
       templateUrl: 'templates/prompt.html',
-      controller: 'usersController as usersCtrl'
+      controller: 'usersController as usersCtrl',
+      restricted: true
     })
     .state('home', {
       url: '/home',
@@ -58,14 +59,9 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
       restricted: true,
       controller: 'usersController as usersCtrl'
     })
-    // .state('prompts-random', {
-    //   url: '/prompts/random',
-    //   template: '<h3>This will be hecka cool when it works. Pseudo code is something like: <br><small>index = Math.floor(Math.random() * promptsArray.length)</small><br> and then render <br><small>promptsArray[index]</small>;</h3>',
-    //   restricted: true
-    // })
-    .state('prompts-random', {
-      url: '/prompts/:id#storytag',
-      template: '<h3>Pseudo code for a random story is something like: <br><small>index = Math.floor(Math.random() * promptsArray.length)</small><br> and then render a random story in that array — But this will be tricky as it means that each story has to be dynmaically html tagged with its place in the array.</h3>',
+    .state('prompt-random', {
+      url: '/prompts/random',
+      template: '<h3>This will be hecka cool when it works. Pseudo code is something like: <br><small>index = Math.floor(Math.random() * promptsArray.length)</small><br> and then render <br><small>promptsArray[index]</small>;</h3>',
       restricted: true
     })
     .state('story-rankings', {

@@ -2,7 +2,9 @@ var express = require('express')
   , router = express.Router()
   , passport = require('passport')
 
-  , models = require('../models/User.js')
+  , User = require('../models/User.js')
+  , Story = require('../models/Story.js')
+  , Prompt = require('../models/Prompt.js')
 
 router.post('/register', function(req, res) {
   User.register(new User({ username: req.body.username, avatar: req.body.avatar }),
@@ -52,6 +54,13 @@ router.get('/logout', function(req, res) {
   })
 })
 
+router.get('/stories', function(req, res) {
+  Story.findOne({'author': req.body.username }, 'body prompt', function (err, story) {
+    if (err) throw err;
+    console.log(story.prompt + ': ' + 'story.body' )
+  })
+})
+
 router.get('/status', function(req, res) {
   if (!req.isAuthenticated()) {
     return res.status(200).json({
@@ -83,9 +92,16 @@ router.delete('/:id', function(req, res) {
 })
 
 router.post('/stories', function(req, res) {
-  Story.new(new Story({body: req.body.body, prompt: req.body.prompt, author: req.body.username}), function () {
-    if (err) throw console.error
-    res.json(story);
+  console.log(req.body);
+  Story.create(req.body, function(err, story){
+
+        if(err) return console.log(err)
+  	  story.author = req.body.username
+  	  story.prompt = req.body.prompt
+  	  story.save(function(err, story){
+          if(err) return console.log(err)
+          res.json(story)
+      })
   })
 })
 

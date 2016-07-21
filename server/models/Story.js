@@ -1,7 +1,7 @@
 // story model
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema
-var passportLocalMongoose = require('passport-local-mongoose')
+// var passportLocalMongoose = require('passport-local-mongoose')
 
 var storySchema = new Schema({
    body: String,
@@ -10,7 +10,7 @@ var storySchema = new Schema({
 })
 
 
-storySchema.plugin(passportLocalMongoose)
+// storySchema.plugin(passportLocalMongoose)
 
 
 module.exports = mongoose.model('Story', storySchema)

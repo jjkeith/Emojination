@@ -1,35 +1,44 @@
-<h4 class="center-align">Ooh, look at you.</h4>
+<h4 class="center-align">{{ main.sup }}</h4>
+
+<div class="spacer"></div>
 
 <div class="row">
-  <div class="col s6 m3 offset-m3">
-    <h2>{{ main.currentUser.avatar}}</h2>
+  <div class="col m4">
+    <h6 class="center-align">{{ main.currentUser.username}}</h6>
+    <h4 class="center-align" ng-bind-html="main.currentUser.avatar"></h4>
+    <p class="center-align"><b>Bio:</b> {{ main.currentUser.bio }}</p>
   </div>
-  <div class="col s6 m3">
-    <h4>{{ main.currentUser.username}}</h4>
-    <p>{{ main.currentUser.bio }}</p>
-  </div>
-</div>
 
-
-var storySchema = new Schema({
-   body: String,
-   author: { type: Schema.Types.ObjectId, ref: 'User' },
-   prompt: { type: Schema.Types.ObjectId, ref: 'Prompt' }
-})
-
-<div class="row">
-  <div class="col s6 m3 offset-m3">
-    <h5>Your Stories</h5>
-    <ul ng-repeat="story in userStories">       
+      <!-- This ng-repeat is not working -->
+  <div class="col m4">
+    <h6 class="center-align">Stories</h6>
+    <ul ng-repeat="story in userStories" class="right-align">
       <li> {{ story.prompt }}: {{ story.body }}</li>
     </ul>
+
+    <!-- This ng-repeat is not working -->
   </div>
-  <div class="col s6 m3">
-    <h5>Your Prompts</h5>
-    <ul ng-repeat="prompt in prompts">
+  <div class="col m4">
+    <h6 class="center-align">Prompts</h6>
+    <ul ng-repeat="prompt in prompts"class="left-align">
       <li>{{ prompt }}</li>
     </ul>
-
   </div>
 
+</div> <!-- closes row -->
+
+<div class="spacer"></div>
+<div class="spacer"></div>
+
+<div class="row">
+  <div class="col s6 center-align">
+    <a ui-sref="profile-edit">
+      <button class="waves-effect waves-light btn" >Edit Profile</button>
+    </a>
+  </div>
+  <div class="col s6 center-align">
+    <div ng-controller="logoutController as logoutCtrl">
+      <button ng-click='logoutCtrl.destroyUser(main.currentUser)' class="waves-effect waves-light red btn">Delete Profile</button>
+    </div>
+  </div>
 </div>

@@ -4,8 +4,9 @@
       <a href="#!" class="brand-logo center">Em<small ng-bind-html="main.randomOhs[0] | twemoji"></small>jinati<small ng-bind-html="main.randomOhs[1] | twemoji"></small>n</a>
         <div ng-if="main.currentUser.username !== nil">
           <ul class="left hide-on-med-and-down">
-            <li>
-              {{ main.hello }}&nbsp{{ main.currentUser.username }}&nbsp {{main.currentUser.avatar }}</li>
+            <li>&nbsp</li><!-- I realize that this is sloppy-->
+            <li ng-bind-html="main.currentUser.avatar"</li>
+            <li>&nbsp{{ main.hello }}&nbsp{{ main.currentUser.username }}&nbsp</li>
           </ul>
         </div>
       <ul class="right hide-on-med-and-down">
@@ -16,7 +17,7 @@
 
             <!-- Dropdown Trigger -->
             <li ng-if="main.currentUser.username !== nil"><a class='dropdown-button ' href='javascript:void(0);' data-activates='navDropdown' dropdown data-hover="true">
-            Profile
+            Options
             </a></li>
       </ul>
 
@@ -30,7 +31,7 @@
     <li><a href="javascript:void(0);" ui-sref="profile">View Profile</a></li>
     <li><a href="javascript:void(0);" ui-sref="profile-edit">Edit Profile</a></li>
     <!-- <li><a href="javascript:void(0);">Your Stories</a></li> -->
-    <li><a href="javascript:void(0);">Your Up Votes</a></li>
+    <!-- <li><a href="javascript:void(0);">Your Up Votes</a></li> -->
     <div ng-controller="logoutController as logoutCtrl">
       <li><a ng-click='logoutCtrl.logout()'>Log Out</a></li></div>
 </ul>

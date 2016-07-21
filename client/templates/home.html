@@ -5,20 +5,34 @@
 </div>
 
 <div class="row">
-  <div class="col s12 m2 offset-m1 offset-s0">
-    <a class="center-align" ui-sref="prompt"><h1 ng-bind-html="main.randomEmojis[0] | twemoji"></h1>Random Prompt</a>
-    <!-- Change this ui-sref to random-prompt when that is working -->
+  <div class="col s4 m3">
+    <a ui-sref="profile">
+      <h2 class="center-align" ng-bind-html="main.randomEmojis[0] | twemoji"></h2>
+      <h6 class="center-align">Your Profile</h6>
+    </a>
   </div>
-  <div class="col s12 m2">
-    <a ui-sref="prompts/random#story-tag"><h1 ng-bind-html="main.randomEmojis[1] | twemoji"></h1>Random Story</a>
+  <div class="col s4 m3">
+    <a ui-sref="prompt"><!-- Change this ui-sref to random-prompt  -->
+      <h2 class="center-align" ng-bind-html="main.randomEmojis[1] | twemoji"></h2>
+      <h6 class="center-align">Random Prompt</h6>
+    </a>
   </div>
-  <div class="col s12 m2">
-    <a ui-sref="prompts"><h1 ng-bind-html="main.randomEmojis[2] | twemoji"></h1>Browse Prompts</a>
+  <div class="col s4 m3">
+    <a ui-sref="prompts">
+      <h2 class="center-align" ng-bind-html="main.randomEmojis[2] | twemoji"></h2>
+      <h6 class="center-align">Browse Prompts</h6>
+    </a>
   </div>
-  <div class="col s12 m2">
-    <a ui-sref="prompt-new"><h1 ng-bind-html="main.randomEmojis[3] | twemoji"></h1>Add New Prompt</a>
+  <div class="col s4 m3">
+    <a ui-sref="prompt-new">
+      <h2 class="center-align" ng-bind-html="main.randomEmojis[3] | twemoji"></h2>
+      <h6 class="center-align">Add New Prompt</h6>
+    </a>
   </div>
-  <div class="col s12 m2">
-    <a ui-sref="top-stories"><h1 ng-bind-html="main.randomEmojis[4] | twemoji"></h1>Top Stories</a>
-  </div>
+  <!-- <div class="col s4 m2">
+    <a ui-sref="story-rankings">
+      <h2 class="center-align" ng-bind-html="main.randomEmojis[4] | twemoji"></h2>
+      <h6 class="center-align">Top Stories</h6>
+    </a>
+  </div> -->
 </div>

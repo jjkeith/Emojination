@@ -1,35 +1,20 @@
 <div class="row">
   <div class="col s12">
-    <h4 class="center-align">Edit {{ main.currentUser.username }}'s Profile  {{ main.currentUser.avatar }}</h4>
+    <h4 class="center-align">Edit {{ main.currentUser.username }}'s Profile  <ng-bind-html ng-bind-html="main.currentUser.avatar | twemoji"</h4>
   </div>
 </div>
 
 <form class="form" ng-submit="main.editUser(main.currentUser._id)">
   <div class="row">
     <div class="col s12 m6">
-      <label>Tell us about yourself</label>
-        <div ng-if="main.currentUser.bio">
-          <textarea id="textarea1" class="materialize-textarea form-control" ng-model="main.editForm.bio">Edit your bio</textarea>
-          <label for="textarea1"></label>
-        </div>
-        <div ng-if="!main.currentUser.bio" class="input-field">
-          <textarea id="textarea1" class="materialize-textarea form-control" ng-model="main.editForm.bio">Enter bio here</textarea>
-          <label for="textarea1"> {{ main.currentUser.bio }} </label>
-        </div>
-    </div>
+      <label for="textarea1">Your Bio <b>*required</b></label>
+        <textarea  id="textarea1" class="materialize-textarea form-control" ng-model="main.editForm.bio" placeholder="{{ main.currentUser.bio }}" value="hello"></textarea>
 
-    <!-- <div class="col s12 m6">
-      <p>Change your emoji (scroll down for more):</p>
-      <h4 class="center-align" ng-if="main.editForm.avatar" ng-bind-html="main.editForm.avatar | twemoji"></h4>
-      <div class="emoji-box">
-        <ul class="emoji-picker" ng-repeat="emoji in main.emojisArr">
-          <li ng-click="main.avatarSelector(emoji)" class="emoji-picker" ng-bind-html="main.emojis[$index] | twemoji"></li>
-        </ul>
-      </div>
-    </div> -->
+
+    </div>
     <div class="col s12 m6">
-      <p>Choose an emoji to represent you (scroll down for more): </p>
-      <h4 class="center-align" ng-if="main.editForm.avatar" ng-bind-html="main.editForm.avatar | twemoji"></h4>
+      <label>Change your emoji (scroll down for more): </label>
+      <h4 class="center-align" ng-bind-html="main.editForm.avatar | twemoji"> </h4>
       <div class="emoji-box">
         <ul class="emoji-picker" ng-repeat="emoji in main.emojisArr">
           <li ng-click="main.avatarSelector(emoji)" class="emoji-picker" ng-bind-html="main.emojis[$index] | twemoji"></li>
@@ -44,10 +29,5 @@
       <button type="submit" class="waves-effect waves-light btn">Submit</button>
     </div>
   </div>
-  <!-- <div class="row">
-    <div class="col s12">
-      <p class="align-center" style="color:red;" ng-click='logoutCtrl.destroyUser()'>Delete Account</p>
-    </div>
-  </div> -->
 
 </form>

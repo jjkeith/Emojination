@@ -1,9 +1,9 @@
   <h4>Imagine a string of emojis here. Wouldn't that be neat?</h4>
   <!-- New Story Form -->
   <form ng-submit="usersCtrl.createStory()">
-    <input type="text" placeholder = "What story are these emojis telling?" ng-model="usersCtrl.newStory">
+    <input type="text" placeholder = "What story are these emojis telling?" ng-model="usersCtrl.storyForm.newStory">
     <!-- This needs to have a character limit of like 1000 -->
-    
+
     <button type="submit">Add Story</button>
 
   </form>

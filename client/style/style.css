@@ -6,31 +6,50 @@ p {
   font-family: 'Open Sans', sans-serif;
 }
 
+.spacer {
+  height: 75px
+}
+
+.centered-emoji__link {
+  height: 72px;
+  width: 72px;
+  margin; 0 auto;
+}
+
+.emoji-menu__label {
+
+}
+
 .alert-danger {
   color: red;
 }
-.card-action .card {
-  padding: 0px;
-  text-align: center;
-}
-.navbar-fixed {
-  /*padding: 5px;*/
-}
-div.emoji-box {
-  height: 200px;
+.emoji-box {
+  height: 250px;
   width: 100%;
   overflow: scroll;
 }
 
-ul.emoji-picker,
-ul.emoji-picker li {
+.emoji-picker li {
   margin: 0;
   padding: 0;
   cursor:pointer;
-}
-
-ul.emoji-picker li {
   float: left;
   width: 20px;
   min-height: 20px;
+}
+
+.emoji-box-prompt {
+  height: 500px;
+  width: 100%;
+  overflow: scroll;
+}
+
+.emoji-picker-prompt li {
+  margin: 0;
+  padding: 0;
+  cursor:pointer;
+  float: left;
+  font-size: 36px;
+  width: 42px;
+  min-height: 42px;
 }
