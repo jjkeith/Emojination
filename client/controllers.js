@@ -54,9 +54,10 @@ function mainController($rootScope, $state, AuthService, $http) {
   })
 
   // for calling routes using buttons
-  vm.go = function ( path ) {
-    $location.path( path );
-  };
+  // vm.go = function ( path ) {
+  //   $location.path( path );
+  // };
+
   // actived by ng-click on editForm
   vm.avatarSelector = function(emoji) {
     vm.editForm.avatar = emoji
@@ -83,7 +84,7 @@ function mainController($rootScope, $state, AuthService, $http) {
   vm.salutation = vm.salutations[Math.floor(Math.random() * vm.salutations.length)];
 
   // array of sups for sup() to access
-  vm.sups = ['Look at you.', 'Ooh, you fancy!', "Noice profile, brah", "Sweet emoji'ing!", "Perky profile greeting!", "Exclamation point. Period."]
+  vm.sups = ['Look at you!', 'Ooh, you fancy!', "Noice profile, brah", "Sweet emoji'ing!", "Perky profile greeting!", "Exclamation point. Period."]
 
   // Randomly selects a sup from sups
   vm.sup = vm.sups[Math.floor(Math.random() * vm.sups.length)];
@@ -102,13 +103,13 @@ function mainController($rootScope, $state, AuthService, $http) {
 // Creates an array of five random emojis to populate buttons on the home page
   vm.randomEmojis = [randomEmojiPicker(), randomEmojiPicker(), randomEmojiPicker(), randomEmojiPicker(), randomEmojiPicker()]
 
-// Randomly selects from an array of o-shaped emoji
-  randomOhPicker = function() {
-    return twemoji.parse(circlesArr[Math.floor((Math.random() * circlesArr.length))])
-  }
+  // Randomly selects from an array of o-shaped emoji
+    randomOhPicker = function() {
+      return twemoji.parse(circlesArr[Math.floor((Math.random() * circlesArr.length))])
+    }
 
-// Creates an array of two o-shaped emojis to populate the logo
-  vm.randomOhs = [randomOhPicker(), randomOhPicker()]
+  // Creates an array of two o-shaped emojis to populate the logo
+    vm.randomOhs = [randomOhPicker(), randomOhPicker(), randomOhPicker(), randomOhPicker(), randomOhPicker()]
 
 // Checks to see if the user is logged in whenever the state is changed.
   $rootScope.$on('$stateChangeStart', function (event) {

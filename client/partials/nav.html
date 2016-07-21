@@ -1,7 +1,16 @@
 <div class="navbar-fixed">
   <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper darken-1"  ng-class="main.color">
+
+<!-- Redirects to landing (not home) even when truthy -->
+      <a ng-if="main.currentUser.username" ui-sref="home" class="brand-logo center">Em<small ng-bind-html="main.randomOhs[0] | twemoji"></small>jinati<small ng-bind-html="main.randomOhs[1] | twemoji"></small>n</a>
+
+<!-- When falsey, should redirect to home -->
+      <!-- <a ng-if="!main.currentUser.username" ui-sref="landing" class="brand-logo center">Em<small ng-bind-html="main.randomOhs[0] | twemoji"></small>jinati<small ng-bind-html="main.randomOhs[1] | twemoji"></small>n</a> -->
+
       <a href="#!" class="brand-logo center">Em<small ng-bind-html="main.randomOhs[0] | twemoji"></small>jinati<small ng-bind-html="main.randomOhs[1] | twemoji"></small>n</a>
+
+
         <div ng-if="main.currentUser.username !== nil">
           <ul class="left hide-on-med-and-down">
             <li>&nbsp</li><!-- I realize that this is sloppy-->
@@ -11,8 +20,11 @@
         </div>
       <ul class="right hide-on-med-and-down">
 
-        <li ng-if="main.currentUser.username !== nil"><a ui-sref="home">Home</a></li>
-        <li ng-if="main.currentUser.username == nil"><a ui-sref="landing">Home</a></li>
+<!-- This works as it should -->
+        <li ng-if="main.currentUser.username">
+          <a ui-sref="home">Home</a></li>
+        <li ng-if="main.currentUser.username == null">
+          <a ui-sref="landing">Home</a></li>
         <li><a ui-sref="prompts">Browse Topics</a></li>
 
             <!-- Dropdown Trigger -->
