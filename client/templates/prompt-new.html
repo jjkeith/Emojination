@@ -1,20 +1,28 @@
-<div class="row">
-  <div class="col s12">
-    <h4 class="center-align">Click on emojis to add them to the prompt: </h4>
+  <div class="row">
+    <div class="col s12">
+      <h4 class="center-align">Click on emojis to add them to the prompt: </h4>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col s12">
-    <h4 ng-bind-html="main.newPrompt | twemoji"></h4>
+<form ng-submit="main.createPrompt(main.promptForm.newPrompt, main.currentUser._id)">
+
+  <div class="row">
+    <div class="col s12">
+
+      <h4 ng-bind-html="main.newPrompt | twemoji" ng-model="main.promptForm.newPrompt"></h4>
+
+      <button type="submit" class="waves-effect waves-light btn right-align" ng-class="main.color">Add Prompt</button>
+
+    </div>
   </div>
-</div>
 
-
-<div class="row">
-  <div class="col s12 emoji-box-prompt">
-    <ul class="emoji-picker-prompt" ng-repeat="emoji in main.emojisArr">
-      <li ng-click="main.newPrompt(emoji)" class="emoji-picker-prompt" ng-bind-html="main.emojis[$index] | twemoji"></li>
-    </ul>
+<!-- Something in here throws up massive errors, but still works -->
+  <div class="row">
+    <div class="col s12 emoji-box-prompt">
+      <ul class="emoji-picker-prompt" ng-repeat="emoji in main.emojisArr">
+        <li ng-click="main.newPrompt(emoji)" class="emoji-picker-prompt" ng-bind-html="main.emojis[$index] | twemoji"></li>
+      </ul>
+    </div>
   </div>
-</div>
+
+</form>

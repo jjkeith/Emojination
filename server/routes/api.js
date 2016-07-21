@@ -74,8 +74,6 @@ router.get('/status', function(req, res) {
 })
 
 router.patch('/:id', function(req, res) {
-  console.log("Patching user...")
-  console.log(req.body)
   User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, user) {
     if (err) throw err;
     res.json({success: true, message: "User updated!", user: user})
@@ -83,8 +81,6 @@ router.patch('/:id', function(req, res) {
 })
 
 router.delete('/:id', function(req, res) {
-  console.log("Deleting user...")
-  console.log(req.body)
   User.findOneAndRemove({_id: req.params.id}, req.body, function(err, user) {
     if (err) throw err;
     res.json({success: true, message: "User deleted!", user: user})
@@ -92,7 +88,7 @@ router.delete('/:id', function(req, res) {
 })
 
 router.post('/stories', function(req, res) {
-  console.log("backend");
+  console.log("backend"); // this isn't logging; stories post, but only id.
   console.log(req.body);
   Story.create(req.body, function(err, story){
     if(err) return console.log(err)

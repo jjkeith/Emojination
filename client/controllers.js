@@ -21,7 +21,7 @@ function mainController($rootScope, $state, AuthService, $http) {
   vm.emojisArr = emojisArr
 
   // post a story to an API route // posting only an id
-  vm.createStory = function() {
+  vm.createStory = function(story, user, prompt ) {
     var story = JSON.stringify(vm.storyForm.newStory)
     console.log("Posting new story:", vm.storyForm.newStory);
     console.log("Author:", vm.currentUser);
@@ -43,7 +43,6 @@ function mainController($rootScope, $state, AuthService, $http) {
     $http.get('/user/prompts')
   }
 
-
   // post a prompt to an API route
   vm.createPrompt = function() {
     console.log("Creating new prompt");
@@ -52,27 +51,17 @@ function mainController($rootScope, $state, AuthService, $http) {
         console.log(data);
       })
   }
-  //
-  // vm.newPrompt = function(emoji) {
-  //   vm.emoji = emoji
-  //   prompt = []
-  //   console.log("clicked: ", emoji)
-  //   prompt.push(emoji)
-  // }
 
   // Patches to the user object
   vm.editUser = function(id) {
-    console.log(vm.editForm);
     $http.patch('/user/' + id, vm.editForm)
     .success(function (data) {
-      console.log(data)
-      $state.go('profile')
       $state.go('profile')
     })
   }
 
 
-// Below are cotent-driving functions and arrays
+// Content-driving functions and arrays
 
   // Parses emojis for the pickers
   vm.emojis = emojisArr.map(function (el) {
