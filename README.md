@@ -1,19 +1,19 @@
 #README for Emojination
-######A MEAN-stack app that allows users to write stories prompted by emojis. 
-######View the site at [https://emojinationapp.herokuapp.com/#/]()
-######Based on an idea by [https://github.com/katajello](Katie Ouaknine).
+######A MEAN-stack app that allows users to write stories prompted by emojis.
+######View the site at [here](https://emojinationapp.herokuapp.com/#/)
+######Based on an idea by [Katie Ouaknine](https://github.com/katajello).
 
 
 ####Technology
-* [https://mlab.com/](MongoDB)
-* [https://github.com/expressjs/express](Express)
-* [https://angularjs.org/](Angular)
-* [https://nodejs.org/en/](Node.js)
-* [http://passportjs.org/](Passport)
-* [https://github.com/krescruz/angular-materialize](Angular-Materialize)
-* [https://github.com/twitter/twemoji](Twemoji) and [https://github.com/scheffield/angular-twemoji](Angular-Twemoji)
-* [https://github.com/angular-ui/ui-router](UI Router)
-* [https://heroku.com/](Heroku)
+* [MongoDB](https://mlab.com/)
+* [Express](https://github.com/expressjs/express)
+* [Angular](https://angularjs.org/)
+* [Node.js](https://nodejs.org/en/)
+* [Passport](http://passportjs.org/)
+* [Angular-Materialize](https://github.com/krescruz/angular-materialize)
+* [Twemoji](https://github.com/twitter/twemoji) and [Angular-Twemoji](https://github.com/scheffield/angular-twemoji)
+* [UI Router](https://github.com/angular-ui/ui-router)
+* [Heroku](https://heroku.com/)
 
 ####Installation Instructions
 In addition to the above dependencies, Emojination requires the following: bcrypt-nodejs, body-parser, cookie-parser, dotenv, express-session, passport-local, passport-local-mongoose, and serve-favicon.
@@ -58,4 +58,4 @@ In addition to the above dependencies, Emojination requires the following: bcryp
 
 
 ####Pitch Deck
-![](PitchDeck_Emojination.pdf)
+![Click here](PitchDeck_Emojination.pdf)
