@@ -1,12 +1,12 @@
 <h4 class="center-align">{{ main.sup }}</h4>
 
-<div class="spacer"></div>
+<div class="mini-spacer"></div>
 
 <div class="row">
   <div class="col s6 offset-m3">
-    <h6 class="center-align">{{ main.currentUser.username}}</h6>
-    <h4 class="center-align" ng-bind-html="main.currentUser.avatar"></h4>
-    <p class="center-align"><b>Bio:</b> {{ main.currentUser.bio }}</p>
+    <h4 class="center-align">{{ main.currentUser.username}}</h4>
+    <h3 class="center-align emoji-icon" ng-bind-html="main.currentUser.avatar"></h3>
+    <p class="center-align"><big><b>Bio:</b></big> {{ main.currentUser.bio }}</p>
   </div>
 
       <!-- This ng-repeat is not working -->
