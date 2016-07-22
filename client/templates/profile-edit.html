@@ -7,11 +7,19 @@
 <form class="form" ng-submit="main.editUser(main.currentUser._id)">
   <div class="row">
     <div class="col s12 m6">
-      <label for="textarea1">Your Bio <b class="red-text">*required</b></label>
+      <label for="textarea1">Your Bio</label>
         <textarea  id="textarea1" class="materialize-textarea form-control" ng-model="main.editForm.bio" placeholder="{{ main.currentUser.bio }}" value="hello"></textarea>
-      <div class="spacer"></div>
 
-    </div>
+      <div class="mini-spacer"></div>
+
+        <button type="submit" class="waves-effect waves-light btn center-align" ng-class="main.color">Submit</button>
+
+      <div class="mini-spacer"></div>
+        <div ng-controller="logoutController as logoutCtrl">
+          <button ng-click='logoutCtrl.destroyUser(main.currentUser)' class="waves-effect waves-light red btn center-align">Delete Profile</button>
+        </div>
+
+      </div>
     <div class="col s12 m6">
       <label>Change your emoji (scroll down for more): </label>
       <h4 class="center-align" ng-bind-html="main.editForm.avatar | twemoji"> </h4>
@@ -21,29 +29,5 @@
         </ul>
       </div>
     </div>
-
-    <button type="submit" class="waves-effect waves-light btn" ng-class="main.color">Submit</button>
-
    </div> <!--close row -->
  </form>
-
-   <script type="text/javascript">
-   function simulateClick() {
-      var event = new MouseEvent('click', {
-        'view': window,
-        'bubbles': true,
-        'cancelable': true
-      });
-      var cb = document.getElementById('textarea1');
-      var canceled = !cb.dispatchEvent(event);
-      if (canceled) {
-        // A handler called preventDefault.
-        alert("canceled");
-      } else {
-        // None of the handlers called preventDefault.
-        cb.setAttribute('value','some words')
-        console.log("this shit fired off");
-      }
-    }
-    simulateClick()
-   </script>

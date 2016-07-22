@@ -9,8 +9,16 @@ p {
 .spacer {
   height: 72px
 }
+
+.mini-spacer {
+  height: 36px
+}
 .emoji-icon {
   font-size: 128px;
+}
+.emoji-icon-small {
+  font-size: 36px;
+  line-height: 64px;
 }
 .emoji-box {
   height: 250px;

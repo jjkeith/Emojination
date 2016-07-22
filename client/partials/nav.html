@@ -32,18 +32,20 @@
             Options
             </a></li>
       </ul>
-
-      </ul>
     </div>
   </nav>
 </div>
 
 <!-- Dropdown Structure -->
 <ul id='navDropdown' class='dropdown-content'>
-    <li><a href="javascript:void(0);" ui-sref="profile">View Profile</a></li>
-    <li><a href="javascript:void(0);" ui-sref="profile-edit">Edit Profile</a></li>
-    <!-- <li><a href="javascript:void(0);">Your Stories</a></li> -->
-    <!-- <li><a href="javascript:void(0);">Your Up Votes</a></li> -->
+
+    <li class="text-black"><a class="{{main.color + '-text'}}" href="javascript:void(0);" ui-sref="profile">View Profile</a></li>
+
+    <li><a class="{{main.color + '-text'}}" href="javascript:void(0);" ui-sref="profile-edit">Edit Profile</a></li>
+
+    <li><a class="{{main.color + '-text'}}" href="javascript:void(0);" ui-sref="prompts">Browse Prompts</a></li>
+
     <div ng-controller="logoutController as logoutCtrl">
-      <li><a ng-click='logoutCtrl.logout()'>Log Out</a></li></div>
+      <li><a class="{{main.color + '-text'}}" ng-click='logoutCtrl.logout()'>Log Out</a></li></div>
+      
 </ul>

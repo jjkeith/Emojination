@@ -7,28 +7,32 @@
 <div class="spacer"></div>
 
 <div class="row">
-  <div class="col s4">
+  <div class="col s6 m3">
     <a ui-sref="profile">
       <h2 class="center-align emoji-icon" ng-bind-html="main.randomEmojis[0] | twemoji"></h2>
-      <h6 class="center-align">Your Profile</h6>
+      <h6 class="center-align {{main.color + '-text'}}">Your Profile</h6>
     </a>
   </div>
-  <div class="col s4">
+
+  <div class="col s6 m3">
+    <a ui-sref="profile-edit">
+      <h2 class="center-align emoji-icon" ng-bind-html="main.randomEmojis[1] | twemoji"></h2>
+      <h6 class="center-align {{main.color + '-text'}}">Edit Profile</h6>
+    </a>
+  </div>
+
+  <div class="col s6 m3">
     <a ui-sref="prompts">
       <h2 class="center-align emoji-icon" ng-bind-html="main.randomEmojis[2] | twemoji"></h2>
-      <h6 class="center-align">Browse Prompts</h6>
+      <h6 class="center-align {{main.color + '-text'}}">Browse Prompts</h6>
     </a>
   </div>
-  <div class="col s4">
-    <a ui-sref="prompt-new">
-      <h2 class="center-align emoji-icon" ng-bind-html="main.randomEmojis[3] | twemoji"></h2>
-      <h6 class="center-align">Add New Prompt</h6>
-    </a>
-  </div>
-  <!-- <div class="col s4 m2">
-    <a ui-sref="story-rankings">
-      <h2 class="center-align" ng-bind-html="main.randomEmojis[4] | twemoji"></h2>
-      <h6 class="center-align">Top Stories</h6>
-    </a>
-  </div> -->
+
+    <div class="col s6 m3" ng-controller="logoutController as logoutCtrl">
+      <a ui-sref="prompts">
+        <h2 class="center-align emoji-icon" ng-bind-html="main.randomEmojis[3] | twemoji"></h2>
+        <h6 class="center-align {{main.color + '-text'}}" ng-click='logoutCtrl.logout()'>Log Out</h6>
+      </a>
+    </div>
+
 </div>

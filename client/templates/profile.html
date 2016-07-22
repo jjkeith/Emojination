@@ -3,19 +3,19 @@
 <div class="spacer"></div>
 
 <div class="row">
-  <div class="col s6">
+  <div class="col s6 offset-m3">
     <h6 class="center-align">{{ main.currentUser.username}}</h6>
     <h4 class="center-align" ng-bind-html="main.currentUser.avatar"></h4>
     <p class="center-align"><b>Bio:</b> {{ main.currentUser.bio }}</p>
   </div>
 
       <!-- This ng-repeat is not working -->
-  <div class="col s6">
+  <!-- <div class="col s6">
     <h6 class="center-align">Stories</h6>
     <ul ng-repeat="story in userStories" class="right-align">
       <li> {{ story.prompt }}: {{ story.body }}</li>
     </ul>
-
+  </div> -->
 
 
 </div> <!-- closes row -->
@@ -24,14 +24,9 @@
 <div class="spacer"></div>
 
 <div class="row">
-  <div class="col s6 center-align">
+  <div class="col s12 m6 offset-m3 center-align">
     <a ui-sref="profile-edit">
       <button class="waves-effect waves-light btn" ng-class="main.color">Edit Profile</button>
     </a>
-  </div>
-  <div class="col s6 center-align">
-    <div ng-controller="logoutController as logoutCtrl">
-      <button ng-click='logoutCtrl.destroyUser(main.currentUser)' class="waves-effect waves-light red btn">Delete Profile</button>
-    </div>
   </div>
 </div>
