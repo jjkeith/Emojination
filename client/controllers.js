@@ -13,12 +13,29 @@ angular.module('emojination')
   registerController.$inject = ['$state', 'AuthService']
 
 function mainController($rootScope, $state, AuthService, $http, $stateParams) {
+  console.log("main controller instantiated");
+
   var vm = this
   vm.name = "Emojination"
   vm.prompt = {}
   vm.editForm = {}
   vm.registerForm = {}
   vm.storyForm = {}
+  vm.stories = []
+
+
+  vm.getStories = function(){
+    $http.get('/user/stories')
+    .then(function(response) {
+            console.log(response.data);
+            vm.stories = response.data;
+            vm.stories.reverse()
+          }
+        ,function(err) {
+          console.log(err);
+    })
+  }
+
 
   // includes the array of emojis
   vm.emojisArr = emojisArr
@@ -26,7 +43,11 @@ function mainController($rootScope, $state, AuthService, $http, $stateParams) {
 // Sets the prompt on the prompts/show page
   vm.setPrompt = function (prompt) {
     vm.prompt = prompt
+    console.log(vm.stories)
   }
+
+  // vm.loadData()
+  // vm.addStories('/user/stories')
 
 
   // post a story to an API route // posting only an id
@@ -39,18 +60,22 @@ function mainController($rootScope, $state, AuthService, $http, $stateParams) {
       .success(function(data){
         console.log(data);
         vm.storyForm = {}
+        vm.stories.push(data)
       })
   }
   $http.get('/user/prompts')
   .success(function(prompts) {
     vm.prompts = prompts
+
     console.log('vm.prompts',vm.prompts);
-    })
+  })
+
+
 
   //returns a user's stories // doesn't work
-  vm.userStories = function() {
-    $http.get('/user/stories')
-  }
+  // vm.userStories = function() {
+  //   $http.get('/user/stories')
+  // }
 
   // post a prompt to an API route // deprecated
   vm.createPrompt = function() {

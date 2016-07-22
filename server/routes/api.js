@@ -55,9 +55,11 @@ router.get('/logout', function(req, res) {
 })
 
 router.get('/stories', function(req, res) {
-  Story.find({'stories': req.body }, 'body', function (err, story) {
+  console.log("inside of user stories");
+  Story.find({}, 'body', function (err, result) {
     if (err) throw err;
-    console.log(story.body)
+    console.log(result)
+    res.json(result)
   })
 })
 

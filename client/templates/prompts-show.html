@@ -1,15 +1,26 @@
-<h4 ng-click="main.setPrompt(prompt)"  ng-bind-html="main.prompt.body | twemoji"></h4>
+<h4 ng-clickj="main.setPrompt(prompt)"  ng-bind-html="main.prompt.body | twemoji"></h4>
 
 <!-- ideally, this form would also be logging datetime created -->
   <form ng-submit="main.createStory(main.storyForm.newStory, main.currentUser._id, main.prompt._id)">
     <input type="text" placeholder = "What story are these emojis telling?" ng-model="main.storyForm.newStory">
-
+<div class="row">
+  <div class="col m2 offset-m5">
     <button type="submit" class="waves-effect waves-light btn" ng-class="main.color">Add Story</button>
+  </div>
+</div>
+
 
   </form>
 
   <ul class="collection">
-    <li ng-repeat="story in main.stories orderBy: $index" class="collection-item">
-      {{ story[$index].body }}
+    <li ng-repeat="story in main.stories" class="collection-item">
+      <p>{{ story.body }}</p>
+
     </li>
   </ul>
+
+  <div class="row">
+    <div class="col m2 offset-m5">
+      <button type="button" class="waves-effect waves-light btn" ng-class="main.color" ng-click="main.getStories()">Show stories</button>
+    </div>
+  </div>
