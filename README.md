@@ -1,7 +1,7 @@
 #README for Emojination
-######A MEAN-stack app that allows users to write stories prompted by emojis.
-######View the site at [here](https://emojinationapp.herokuapp.com/#/)
-######Based on an idea by [Katie Ouaknine](https://github.com/katajello).
+#####A MEAN-stack app that allows users to write stories prompted by emojis.
+#####View the site at [here](https://emojinationapp.herokuapp.com/#/)
+#####Based on an idea by [Katie Ouaknine](https://github.com/katajello).
 
 
 ####Technology
@@ -19,7 +19,7 @@
 In addition to the above dependencies, Emojination requires the following: bcrypt-nodejs, body-parser, cookie-parser, dotenv, express-session, passport-local, passport-local-mongoose, and serve-favicon.
 
 ####User Stories
-* Users can create an Emojination account or log in.
+* Users can create an Emojination account or log in with an existing account.
 * Users can select their favorite emoticon to be their avatar.
 * Users can scroll through a list of story prompts.
 * Users can contribute a new story to a prompt.
@@ -54,8 +54,8 @@ In addition to the above dependencies, Emojination requires the following: bcryp
 ####Screenshots
 ![](Screenshot1.jpg)
 ![](Screenshot2.jpg)
-![](Screenshot3.jpg)
+![](Screenshot3.png)
 
 
 ####Pitch Deck
-![Click here](PitchDeck_Emojination.pdf)
+[Click here](PitchDeck_Emojination.pdf)
