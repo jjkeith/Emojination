@@ -99,16 +99,13 @@ router.post('/stories', function(req, res) {
   })
 })
 
+
 router.get('/prompts', function(req, res) {
-  console.log(req.body);
-  res.status(200).json({
-    status: true,
-    prompts: req.prompt
+  Prompt.find({}, function(err, prompts) {
+    if (err) throw err
+      res.json(prompts)
   })
-
 })
-
-
 
 
 // route to get all prompts

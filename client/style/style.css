@@ -1,7 +1,3 @@
-#navOptions {
-  color: yellow;
-}
-
 body {
   font-family: 'Fredoka One', cursive;
   color: #333;
@@ -11,9 +7,11 @@ p {
 }
 
 .spacer {
-  height: 75px
+  height: 72px
 }
-
+.emoji-icon {
+  font-size: 128px;
+}
 .emoji-box {
   height: 250px;
   width: 100%;

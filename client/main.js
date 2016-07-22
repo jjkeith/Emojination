@@ -34,9 +34,9 @@ emojination.config(function ($stateProvider, $urlRouterProvider) {
       restricted: true
     })
     // Fix the ID thing
-    .state('prompt', {
+    .state('prompts-show', {
       url: '/prompts/:id',
-      templateUrl: 'templates/prompt.html',
+      templateUrl: 'templates/prompts-show.html',
       restricted: true
     })
     .state('home', {

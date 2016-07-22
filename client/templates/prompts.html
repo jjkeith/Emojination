@@ -3,12 +3,21 @@
     <h4>Br<small ng-bind-html="main.randomOhs[3] | twemoji"></small>wse Pr<small ng-bind-html="main.randomOhs[4] | twemoji"></small>mpts</h4>
   </div>
 </div>
+
 <div class="row">
-  <div class="col m8 s12 offset-m2 offset-s0 center-align">
-    <p>
-      {{ main.prompts[0]}}
-      
-      Building this view won't be so bad. Create a ng-repeat table/collection in here that lists the prompts, # of stories, and time of most recent contribution. Gonna need <a href="http://materializecss.com/collapsible.html#popout">this page</a>.
-    </p>
+  <div class="col m8 s12 offset-m2 offset-s0 center-align" >
+    <!-- <ul class="collection">
+      <a ng-repeat="prompt in main.prompts track by $index" ui-sref="prompts-show({id:prompt._id})">
+        <li ng-click="main.setPrompt(prompt)" class="collection-item" ng-bind-html="prompt.body | twemoji"></li>
+      </a>
+    </ul> -->
+
+    <ul class="collapsible popout" data-collapsible="accordion" watch>
+      <a ng-repeat="prompt in main.prompts track by $index" ui-sref="prompts-show({id:prompt._id})">
+        <li>{{prompt[$index].body}}</li>
+      </a>
+    </ul>
+
+
   </div>
 </div>

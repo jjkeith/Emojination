@@ -3,27 +3,20 @@
 <div class="spacer"></div>
 
 <div class="row">
-  <div class="col m4">
+  <div class="col s6">
     <h6 class="center-align">{{ main.currentUser.username}}</h6>
     <h4 class="center-align" ng-bind-html="main.currentUser.avatar"></h4>
     <p class="center-align"><b>Bio:</b> {{ main.currentUser.bio }}</p>
   </div>
 
       <!-- This ng-repeat is not working -->
-  <div class="col m4">
+  <div class="col s6">
     <h6 class="center-align">Stories</h6>
     <ul ng-repeat="story in userStories" class="right-align">
       <li> {{ story.prompt }}: {{ story.body }}</li>
     </ul>
 
-    <!-- This ng-repeat is not working -->
-  </div>
-  <div class="col m4">
-    <h6 class="center-align">Prompts</h6>
-    <ul ng-repeat="prompt in prompts"class="left-align">
-      <li>{{ prompt }}</li>
-    </ul>
-  </div>
+
 
 </div> <!-- closes row -->
 

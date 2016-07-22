@@ -5,11 +5,10 @@ var Schema = mongoose.Schema
 
 var storySchema = new Schema({
    body: String,
-   author: { type: Schema.Types.ObjectId, ref: 'User' },
+   author: {type: Schema.Types.ObjectId, ref: 'User', unique: false, type: String},
    username: String,
    prompt: { type: Schema.Types.ObjectId, ref: 'Prompt' }
 })
-
 
 // storySchema.plugin(passportLocalMongoose)
 

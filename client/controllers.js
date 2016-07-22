@@ -12,16 +12,20 @@ angular.module('emojination')
   logoutController.$inject = ['$state', 'AuthService', '$http']
   registerController.$inject = ['$state', 'AuthService']
 
-
 function mainController($rootScope, $state, AuthService, $http, $stateParams) {
   var vm = this
   vm.name = "Emojination"
+  vm.prompt = {}
 
   // includes the array of emojis
   vm.emojisArr = emojisArr
 
+  vm.setPrompt = function (prompt) {
+    vm.prompt = prompt
+  }
+
   // post a story to an API route // posting only an id
-  vm.createStory = function(story, user, prompt ) {
+  vm.createStory = function(story, user, prompt) {
     var story = JSON.stringify(vm.storyForm.newStory)
     var newStory = {body : vm.storyForm.newStory, author : vm.currentUser._id, username: vm.currentUser.username, prompt: $stateParams.id}
 
@@ -32,15 +36,15 @@ function mainController($rootScope, $state, AuthService, $http, $stateParams) {
         vm.storyForm = {}
       })
   }
+  $http.get('/user/prompts')
+  .success(function(prompts) {
+    vm.prompts = prompts
+    console.log('vm.prompts',vm.prompts);
+    })
 
   //returns a user's stories // doesn't work
   vm.userStories = function() {
     $http.get('/user/stories')
-  }
-
-  //returns a user's prompts // doesn't work
-  vm.userPrompts = function() {
-    $http.get('/user/prompts')
   }
 
   // post a prompt to an API route
@@ -59,7 +63,6 @@ function mainController($rootScope, $state, AuthService, $http, $stateParams) {
       $state.go('profile')
     })
   }
-
 
 // Content-driving functions and arrays
 
