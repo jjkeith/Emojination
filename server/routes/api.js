@@ -55,9 +55,9 @@ router.get('/logout', function(req, res) {
 })
 
 router.get('/stories', function(req, res) {
-  Story.findOne({'username': req.body.username }, 'body prompt', function (err, story) {
+  Story.find({'stories': req.body }, 'body', function (err, story) {
     if (err) throw err;
-    console.log(story.prompt + ': ' + 'story.body' )
+    console.log(story.body)
   })
 })
 
@@ -99,7 +99,6 @@ router.post('/stories', function(req, res) {
   })
 })
 
-
 router.get('/prompts', function(req, res) {
   Prompt.find({}, function(err, prompts) {
     if (err) throw err
@@ -107,9 +106,5 @@ router.get('/prompts', function(req, res) {
   })
 })
 
-
-// route to get all prompts
-// going to the 'prompts' state on the front should make a request for those prompts, then list on the front end.
-// clicking on a prompt should go to the single prompt state, where the form for adding stories should be.
 
 module.exports = router

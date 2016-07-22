@@ -17,13 +17,17 @@ function mainController($rootScope, $state, AuthService, $http, $stateParams) {
   vm.name = "Emojination"
   vm.prompt = {}
   vm.editForm = {}
+  vm.registerForm = {}
+  vm.storyForm = {}
 
   // includes the array of emojis
   vm.emojisArr = emojisArr
 
+// Sets the prompt on the prompts/show page
   vm.setPrompt = function (prompt) {
     vm.prompt = prompt
   }
+
 
   // post a story to an API route // posting only an id
   vm.createStory = function(story, user, prompt) {
@@ -48,7 +52,7 @@ function mainController($rootScope, $state, AuthService, $http, $stateParams) {
     $http.get('/user/stories')
   }
 
-  // post a prompt to an API route
+  // post a prompt to an API route // deprecated
   vm.createPrompt = function() {
     console.log("Creating new prompt");
     $http.post('/user/prompts', {prompt : vm.newPrompt})

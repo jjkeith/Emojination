@@ -1,7 +1,6 @@
 <h4 ng-click="main.setPrompt(prompt)"  ng-bind-html="main.prompt.body | twemoji"></h4>
 
 <!-- ideally, this form would also be logging datetime created -->
-
   <form ng-submit="main.createStory(main.storyForm.newStory, main.currentUser._id, main.prompt._id)">
     <input type="text" placeholder = "What story are these emojis telling?" ng-model="main.storyForm.newStory">
 
@@ -9,11 +8,8 @@
 
   </form>
 
-
-  <ul class="collection" ng-repeat="story in main.prompt.stories | orderBy: dateTime">
-    <!-- There's no backend supporting this. Need be searching for stories associated with a prompt. Remember to use prepend. -->
-    <li class="collection-item">
-      {{ story.body }}<br>
-      <i>— by {{ story.author}}</i>
+  <ul class="collection">
+    <li ng-repeat="story in main.stories orderBy: $index" class="collection-item">
+      {{ story[$index].body }}
     </li>
   </ul>
