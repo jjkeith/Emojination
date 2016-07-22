@@ -16,6 +16,7 @@ function mainController($rootScope, $state, AuthService, $http, $stateParams) {
   var vm = this
   vm.name = "Emojination"
   vm.prompt = {}
+  vm.editForm = {}
 
   // includes the array of emojis
   vm.emojisArr = emojisArr
