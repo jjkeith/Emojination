@@ -3,7 +3,6 @@
 #####View the site at [here](https://emojinationapp.herokuapp.com/#/)
 #####Based on an idea by [Katie Ouaknine](https://github.com/katajello).
 
-
 ####Technology
 * [MongoDB](https://mlab.com/)
 * [Express](https://github.com/expressjs/express)
@@ -16,7 +15,7 @@
 * [Heroku](https://heroku.com/)
 
 ####Installation Instructions
-In addition to the above dependencies, Emojination requires the following: bcrypt-nodejs, body-parser, cookie-parser, dotenv, express-session, passport-local, passport-local-mongoose, and serve-favicon.
+In addition to the above dependencies, Emojination requires the following: bcrypt-nodejs, body-parser, cookie-parser, dotenv, express-session, passport-local, passport-local-mongoose, and serve-favicon. After forking or cloning, users must establish either a local mongoose database or an mlabs database. 
 
 ####User Stories
 * Users can create an Emojination account or log in with an existing account.
