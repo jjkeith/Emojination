@@ -3,10 +3,11 @@
     <div class="nav-wrapper darken-1"  ng-class="main.color">
 
 <!-- Redirects to landing (not home) even when truthy -->
-      <a ng-if="main.currentUser.username" ui-sref="home" class="brand-logo center">Em<small ng-bind-html="main.randomOhs[0] | twemoji"></small>jinati<small ng-bind-html="main.randomOhs[1] | twemoji"></small>n</a>
+    <span ng-if="main.currentUser.username" >
+      <a ui-sref="home" class="brand-logo center">Em<small ng-bind-html="main.randomOhs[0] | twemoji"></small>jinati<small ng-bind-html="main.randomOhs[1] | twemoji"></small>n</a></span>
 
-<!-- When falsey, should redirect to home -->
-      <!-- <a ng-if="!main.currentUser.username" ui-sref="landing" class="brand-logo center">Em<small ng-bind-html="main.randomOhs[0] | twemoji"></small>jinati<small ng-bind-html="main.randomOhs[1] | twemoji"></small>n</a> -->
+
+      <a ng-if="main.currentUser.username == null" ui-sref="landing" class="brand-logo center">Em<small ng-bind-html="main.randomOhs[0] | twemoji"></small>jinati<small ng-bind-html="main.randomOhs[1] | twemoji"></small>n</a>
 
       <a href="#!" class="brand-logo center">Em<small ng-bind-html="main.randomOhs[0] | twemoji"></small>jinati<small ng-bind-html="main.randomOhs[1] | twemoji"></small>n</a>
 
@@ -47,5 +48,5 @@
 
     <div ng-controller="logoutController as logoutCtrl">
       <li><a class="{{main.color + '-text'}}" ng-click='logoutCtrl.logout()'>Log Out</a></li></div>
-      
+
 </ul>

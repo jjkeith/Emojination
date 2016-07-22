@@ -4,3 +4,4 @@ _old
 .DS_Store
 .mah_issues
 client/bower_components
+client/templates/prompt-new-deprecated.html

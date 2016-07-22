@@ -1,6 +1,6 @@
   <div class="row">
     <div class="col s12">
-      <h4 class="center-align">Get an account and start writing stories</h4>
+      <h4 class="center-align">Get an account and start writing st<small ng-bind-html="main.randomOhs[0] | twemoji"></small>ries</h4>
       <div ng-show="registerCtrl.error" class="alert red">{{registerCtrl.errorMessage}}</div>
     </div>
   </div>
@@ -14,7 +14,7 @@
       <button type="submit" class="waves-effect waves-light btn center-align"  ng-class="main.color" ng-disabled="registerCtrl.disabled" >Register</button>
     </div>
     <div class="col s12 m6">
-      <p>Choose an emoji to represent you (scroll down for more): </p>
+      <label>Choose an emoji to represent you (scroll down for more): </label>
       <h4 class="center-align" ng-if="registerCtrl.registerForm.avatar" ng-bind-html="registerCtrl.registerForm.avatar | twemoji"></h4>
       <div class="emoji-box">
         <ul class="emoji-picker" ng-repeat="emoji in registerCtrl.emojisArr">
