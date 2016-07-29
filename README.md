@@ -15,7 +15,7 @@
 * [Heroku](https://heroku.com/)
 
 ####Installation Instructions
-In addition to the above dependencies, Emojination requires the following: bcrypt-nodejs, body-parser, cookie-parser, dotenv, express-session, passport-local, passport-local-mongoose, and serve-favicon. After forking or cloning, users must establish either a local mongoose database or an mlabs database. 
+In addition to the above dependencies, Emojination requires the following: bcrypt-nodejs, body-parser, cookie-parser, dotenv, express-session, passport-local, passport-local-mongoose, and serve-favicon. After forking or cloning, users must establish either a local mongoose database or an mlabs database.
 
 ####User Stories
 * Users can create an Emojination account or log in with an existing account.
@@ -37,6 +37,8 @@ In addition to the above dependencies, Emojination requires the following: bcryp
 * Users can comment on others' stories.
 * Users can select a color for their profile.
 
+####Known Bugs
+* Currently all stories are showing up for all prompts. 
 
 ####Other Future Implementations
 * A parallax landing page
